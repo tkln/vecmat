@@ -10,6 +10,11 @@ void test_vec2i(void)
 
     ASSERTM_EQ(a.x, 1, "got: %d", a.x);
     ASSERTM_EQ(a.y, 1, "got: %d", a.y);
+
+    a = vec2i_inv(a);
+
+    ASSERTM_EQ(a.x, -1, "got: %d", a.x);
+    ASSERTM_EQ(a.y, -1, "got: %d", a.y);
 }
 
 void test_vec2f(void)
@@ -18,6 +23,11 @@ void test_vec2f(void)
 
     ASSERTM_EQ(a.x, 1.0f, "got: %f", a.x);
     ASSERTM_EQ(a.y, 1.0f, "got: %f", a.y);
+
+    a = vec2f_inv(a);
+
+    ASSERTM_EQ(a.x, -1.0f, "got: %f", a.x);
+    ASSERTM_EQ(a.y, -1.0f, "got: %f", a.y);
 }
 
 void test_vec3f(void)
@@ -27,6 +37,12 @@ void test_vec3f(void)
     ASSERTM_EQ(a.x, 1.0f, "got: %f", a.x);
     ASSERTM_EQ(a.y, 1.0f, "got: %f", a.y);
     ASSERTM_EQ(a.z, 1.0f, "got: %f", a.z);
+
+    a = vec3f_inv(a);
+
+    ASSERTM_EQ(a.x, -1.0f, "got: %f", a.x);
+    ASSERTM_EQ(a.y, -1.0f, "got: %f", a.y);
+    ASSERTM_EQ(a.z, -1.0f, "got: %f", a.z);
 }
 
 void test_vec4f(void)
@@ -37,6 +53,13 @@ void test_vec4f(void)
     ASSERTM_EQ(a.y, 1.0f, "got: %f", a.y);
     ASSERTM_EQ(a.z, 1.0f, "got: %f", a.z);
     ASSERTM_EQ(a.w, 1.0f, "got: %f", a.w);
+
+    a = vec4f_inv(a);
+
+    ASSERTM_EQ(a.x, -1.0f, "got: %f", a.x);
+    ASSERTM_EQ(a.y, -1.0f, "got: %f", a.y);
+    ASSERTM_EQ(a.z, -1.0f, "got: %f", a.z);
+    ASSERTM_EQ(a.w, -1.0f, "got: %f", a.w);
 }
 
 int main(int argc, char **argv)
