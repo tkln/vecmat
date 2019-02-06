@@ -1,6 +1,8 @@
 #ifndef VECMAT_VEC_H
 #define VECMAT_VEC_H
 
+#include "vecmat-compiler.h"
+
 #ifdef __cplusplus
 extern "C" {
 namespace vm {
