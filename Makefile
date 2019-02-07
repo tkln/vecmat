@@ -1,5 +1,6 @@
 CFLAGS+=-Wall -O2
 CXXFLAGS+=$(CFLAGS)
+LDFLAGS+=-lm
 
 all: test testpp
 
