@@ -279,6 +279,11 @@ INLINE float dot(const vec3f a, const vec3f b)
     return vec3f_dot(a, b);
 }
 
+INLINE vec3f cross(const vec3f a, const vec3f b)
+{
+    return vec3f_cross(a, b);
+}
+
 } /* namespace vm */
 #endif
 

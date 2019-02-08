@@ -106,6 +106,9 @@ void test_vec3f(void)
     ASSERT_EQ(2.0f % a, vec3f(0.0f, 0.0f, 2.0f));
 
     ASSERT_EQ(dot(a, a), 14.0f);
+
+    ASSERT_EQ(cross(vec3f(1.0f, 0.0f, 0.0f), vec3f(0.0f, 1.0f, 0.0f)),
+              vec3f(0.0f, 0.0f, 1.0f));
 }
 
 void test_vec4f(void)
