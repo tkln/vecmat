@@ -40,6 +40,10 @@ static INLINE float vec4f_norm(const struct vec4f v);
 struct vec4f {
     float x, y, z, w;
 #ifdef __cplusplus
+    INLINE vec4f()
+    {
+    }
+
     INLINE vec4f(float x, float y, float z, float w) : x(x), y(y), z(z), w(w)
     {
     }

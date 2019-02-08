@@ -37,6 +37,10 @@ static INLINE struct vec2i vec2i_divs(const struct vec2i v, const int s);
 struct vec2i {
     int x, y;
 #ifdef __cplusplus
+    INLINE vec2i()
+    {
+    }
+
     INLINE vec2i(int x, int y) : x(x), y(y)
     {
     }

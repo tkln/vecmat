@@ -43,6 +43,10 @@ static INLINE float vec3f_norm(const struct vec3f v);
 struct vec3f {
     float x, y, z;
 #ifdef __cplusplus
+    INLINE vec3f()
+    {
+    }
+
     INLINE vec3f(float x, float y, float z) : x(x), y(y), z(z)
     {
     }

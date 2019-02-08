@@ -40,6 +40,10 @@ static INLINE float vec2f_norm(const struct vec2f v);
 struct vec2f {
     float x, y;
 #ifdef __cplusplus
+    INLINE vec2f()
+    {
+    }
+
     INLINE vec2f(float x, float y) : x(x), y(y)
     {
     }
