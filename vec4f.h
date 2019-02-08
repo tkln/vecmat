@@ -138,6 +138,15 @@ static INLINE float vec4f_dot(const struct vec4f a, const struct vec4f b)
     return c.x + c.y + c.z + c.w;
 }
 
+static INLINE float vec4f_norm2(const struct vec4f v)
+{
+    return vec4f_dot(v, v);
+}
+
+static INLINE float vec4f_norm(const struct vec4f v)
+{
+    return sqrtf(vec4f_norm2(v));
+}
 
 #ifdef __cplusplus
 } /* namespace vm */

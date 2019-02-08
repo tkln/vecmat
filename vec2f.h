@@ -118,6 +118,16 @@ static INLINE float vec2f_dot(const struct vec2f a, const struct vec2f b)
     return c.x + c.y;
 }
 
+static INLINE float vec2f_norm2(const struct vec2f v)
+{
+    return vec2f_dot(v, v);
+}
+
+static INLINE float vec2f_norm(const struct vec2f v)
+{
+    return sqrtf(vec2f_norm2(v));
+}
+
 #ifdef __cplusplus
 } /* namespace vm */
 } /* extern "C" */

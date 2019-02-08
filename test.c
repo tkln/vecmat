@@ -63,6 +63,8 @@ void test_vec2i(void)
             "got %d, %d", c.x, c.y);
 
     ASSERT_EQ(vec2i_dot(b, b), 5);
+
+    ASSERT_EQ(vec2i_norm2(b), 5);
 }
 
 void test_vec2f(void)
@@ -121,6 +123,9 @@ void test_vec2f(void)
             "got %f, %f", c.x, c.y);
 
     ASSERT_EQ(vec2f_dot(b, b), 5.0f);
+
+    ASSERT_EQ(vec2f_norm2(b), 5.0f);
+    ASSERT_EQ(vec2f_norm(b), sqrtf(5.0f));
 }
 
 void test_vec3f(void)
@@ -180,6 +185,9 @@ void test_vec3f(void)
             "got %f, %f, %f", c.x, c.y, c.z);
 
     ASSERT_EQ(vec3f_dot(b, b), 14.0f);
+
+    ASSERT_EQ(vec3f_norm2(b), 14.0f);
+    ASSERT_EQ(vec3f_norm(b), sqrtf(14.0f));
 }
 
 void test_vec4f(void)
@@ -258,6 +266,9 @@ void test_vec4f(void)
             "got %f, %f, %f, %f", c.x, c.y, c.z, c.w);
 
     ASSERT_EQ(vec4f_dot(b, b), 30.0f);
+
+    ASSERT_EQ(vec4f_norm2(b), 30.0f);
+    ASSERT_EQ(vec4f_norm(b), sqrtf(30.0f));
 }
 
 int main(int argc, char **argv)

@@ -118,6 +118,11 @@ static INLINE int vec2i_dot(const struct vec2i a, const struct vec2i b)
     return c.x + c.y;
 }
 
+static INLINE int vec2i_norm2(const struct vec2i a)
+{
+    return vec2i_dot(a, a);
+}
+
 #ifdef __cplusplus
 } /* namespace vm */
 } /* extern "C" */

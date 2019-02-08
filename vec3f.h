@@ -129,6 +129,16 @@ static INLINE float vec3f_dot(const struct vec3f a, const struct vec3f b)
     return c.x + c.y + c.z;
 }
 
+static INLINE float vec3f_norm2(const struct vec3f v)
+{
+    return vec3f_dot(v, v);
+}
+
+static INLINE float vec3f_norm(const struct vec3f v)
+{
+    return sqrtf(vec3f_norm2(v));
+}
+
 #ifdef __cplusplus
 } /* namespace vm */
 } /* extern "C" */
