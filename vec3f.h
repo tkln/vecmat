@@ -189,6 +189,46 @@ INLINE bool operator!=(const vec3f a, const vec3f b)
     return !vec3f_eq(a, b);
 }
 
+INLINE vec3f operator+(const vec3f v)
+{
+    return v;
+}
+
+INLINE vec3f operator-(const vec3f v)
+{
+    return vec3f_inv(v);
+}
+
+INLINE vec3f operator+(const vec3f a, const vec3f b)
+{
+    return vec3f_add(a, b);
+}
+
+INLINE vec3f operator-(const vec3f a, const vec3f b)
+{
+    return vec3f_sub(a, b);
+}
+
+INLINE vec3f operator+(const vec3f v, const float s)
+{
+    return vec3f_adds(v, s);
+}
+
+INLINE vec3f operator-(const vec3f v, const float s)
+{
+    return vec3f_subs(v, s);
+}
+
+INLINE vec3f operator+(const float s, const vec3f v)
+{
+    return vec3f_adds(v, s);
+}
+
+INLINE vec3f operator-(const float s, const vec3f v)
+{
+    return vec3f_adds(v, -s);
+}
+
 } /* namespace vm */
 #endif
 

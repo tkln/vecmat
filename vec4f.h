@@ -189,6 +189,46 @@ INLINE bool operator!=(const vec4f a, const vec4f b)
     return !vec4f_eq(a, b);
 }
 
+INLINE vec4f operator+(const vec4f v)
+{
+    return v;
+}
+
+INLINE vec4f operator-(const vec4f v)
+{
+    return vec4f_inv(v);
+}
+
+INLINE vec4f operator+(const vec4f a, const vec4f b)
+{
+    return vec4f_add(a, b);
+}
+
+INLINE vec4f operator-(const vec4f a, const vec4f b)
+{
+    return vec4f_sub(a, b);
+}
+
+INLINE vec4f operator+(const vec4f v, const float s)
+{
+    return vec4f_adds(v, s);
+}
+
+INLINE vec4f operator-(const vec4f v, const float s)
+{
+    return vec4f_subs(v, s);
+}
+
+INLINE vec4f operator+(const float s, const vec4f v)
+{
+    return vec4f_adds(v, s);
+}
+
+INLINE vec4f operator-(const float s, const vec4f v)
+{
+    return vec4f_adds(v, -s);
+}
+
 } /* namespace vm */
 #endif
 

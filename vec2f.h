@@ -169,6 +169,46 @@ INLINE bool operator!=(const vec2f &a, const vec2f &b)
     return !vec2f_eq(a, b);
 }
 
+INLINE vec2f operator+(const vec2f v)
+{
+    return v;
+}
+
+INLINE vec2f operator-(const vec2f v)
+{
+    return vec2f_inv(v);
+}
+
+INLINE vec2f operator+(const vec2f a, const vec2f b)
+{
+    return vec2f_add(a, b);
+}
+
+INLINE vec2f operator-(const vec2f a, const vec2f b)
+{
+    return vec2f_sub(a, b);
+}
+
+INLINE vec2f operator+(const vec2f v, const float s)
+{
+    return vec2f_adds(v, s);
+}
+
+INLINE vec2f operator-(const vec2f v, const float s)
+{
+    return vec2f_subs(v, s);
+}
+
+INLINE vec2f operator+(const float s, const vec2f v)
+{
+    return vec2f_adds(v, s);
+}
+
+INLINE vec2f operator-(const float s, const vec2f v)
+{
+    return vec2f_adds(v, -s);
+}
+
 } /* namespace vm */
 #endif
 

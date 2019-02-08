@@ -22,6 +22,15 @@ void test_vec2i(void)
 
     ASSERT(a == vec2i(1, 2));
     ASSERT(a != vec2i(2, 2));
+
+    ASSERT(+a == a);
+    ASSERT_EQ(-a, vec2i(-1, -2));
+    ASSERT_EQ(vec2i(1, 1) + vec2i(1, 2), vec2i(2, 3));
+    ASSERT_EQ(vec2i(1, 1) - vec2i(1, 2), vec2i(0, -1));
+    ASSERT_EQ(vec2i(1, 2) + 1, vec2i(2, 3));
+    ASSERT_EQ(vec2i(1, 2) - 1, vec2i(0, 1));
+    ASSERT_EQ(1 + vec2i(1, 2), vec2i(2, 3));
+    ASSERT_EQ(1 - vec2i(1, 2), vec2i(0, 1));
 }
 
 void test_vec2f(void)
@@ -32,6 +41,15 @@ void test_vec2f(void)
 
     ASSERT(a == vec2f(1.0f, 2.0f));
     ASSERT(a != vec2f(2.0f, 2.0f));
+
+    ASSERT(+a == a);
+    ASSERT_EQ(-a, vec2f(-1.0f, -2.0f));
+    ASSERT_EQ(vec2f(1.0f, 1.0f) + a, vec2f(2.0f, 3.0f));
+    ASSERT_EQ(vec2f(1.0f, 1.0f) - a, vec2f(0.0f, -1.0f));
+    ASSERT_EQ(a + 1.0f, vec2f(2.0f, 3.0f));
+    ASSERT_EQ(a - 1.0f, vec2f(0.0f, 1.0f));
+    ASSERT_EQ(1.0f + a, vec2f(2.0f, 3.0f));
+    ASSERT_EQ(1.0f - a, vec2f(0.0f, 1.0f));
 }
 
 void test_vec3f(void)
@@ -43,6 +61,15 @@ void test_vec3f(void)
 
     ASSERT(a == vec3f(1.0f, 2.0f, 3.0f));
     ASSERT(a != vec3f(2.0f, 2.0f, 2.0f));
+
+    ASSERT_EQ(+a, a);
+    ASSERT_EQ(-a, vec3f(-1.0f, -2.0f, -3.0f));
+    ASSERT_EQ(vec3f(1.0f, 1.0f, 1.0f) + a, vec3f(2.0f, 3.0f, 4.0f));
+    ASSERT_EQ(vec3f(1.0f, 1.0f, 1.0f) - a, vec3f(0.0f, -1.0f, -2.0f));
+    ASSERT_EQ(a + 1.0f, vec3f(2.0f, 3.0f, 4.0f));
+    ASSERT_EQ(a - 1.0f, vec3f(0.0f, 1.0f, 2.0f));
+    ASSERT_EQ(1.0f + a, vec3f(2.0f, 3.0f, 4.0f));
+    ASSERT_EQ(1.0f - a, vec3f(0.0f, 1.0f, 2.0f));
 }
 
 void test_vec4f(void)
@@ -55,6 +82,15 @@ void test_vec4f(void)
 
     ASSERT(a == vec4f(1.0f, 2.0f, 3.0f, 4.0f));
     ASSERT(a != vec4f(2.0f, 2.0f, 2.0f, 2.0f));
+
+    ASSERT(+a == a);
+    ASSERT_EQ(-a, vec4f(-1.0f, -2.0f, -3.0f, -4.0f));
+    ASSERT_EQ(vec4f(1.0f, 1.0f, 1.0f, 1.0f) + a, vec4f(2.0f, 3.0f, 4.0f, 5.0f));
+    ASSERT_EQ(vec4f(1.0f, 1.0f, 1.0f, 1.0f) - a, vec4f(0.0f, -1.0f, -2.0f, -3.0f));
+    ASSERT_EQ(a + 1.0f, vec4f(2.0f, 3.0f, 4.0f, 5.0f));
+    ASSERT_EQ(a - 1.0f, vec4f(0.0f, 1.0f, 2.0f, 3.0f));
+    ASSERT_EQ(1.0f + a, vec4f(2.0f, 3.0f, 4.0f, 5.0f));
+    ASSERT_EQ(1.0f - a, vec4f(0.0f, 1.0f, 2.0f, 3.0f));
 }
 
 int main(int argc, char **argv)
