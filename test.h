@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2019 Aapo Vienamo
+ * SPDX-License-Identifier: CC0-1.0
+ */
+
 #ifndef TEST_H
 #define TEST_H
 
