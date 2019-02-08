@@ -43,6 +43,22 @@ static INLINE struct vec2i vec2i_sub(const struct vec2i a, const struct vec2i b)
     };
 }
 
+static INLINE struct vec2i vec2i_adds(const struct vec2i v, const int s)
+{
+    return (struct vec2i) {
+        v.x + s,
+        v.y + s,
+    };
+}
+
+static INLINE struct vec2i vec2i_subs(const struct vec2i v, const int s)
+{
+    return (struct vec2i) {
+        v.x - s,
+        v.y - s,
+    };
+}
+
 static INLINE struct vec2i vec2i_mul(const struct vec2i a, const struct vec2i b)
 {
     return (struct vec2i) {
@@ -124,6 +140,22 @@ static INLINE struct vec2f vec2f_sub(const struct vec2f a, const struct vec2f b)
     };
 }
 
+static INLINE struct vec2f vec2f_adds(const struct vec2f a, const float s)
+{
+    return (struct vec2f) {
+        a.x + s,
+        a.y + s,
+    };
+}
+
+static INLINE struct vec2f vec2f_subs(const struct vec2f a, const float s)
+{
+    return (struct vec2f) {
+        a.x - s,
+        a.y - s,
+    };
+}
+
 static INLINE struct vec2f vec2f_mul(const struct vec2f a, const struct vec2f b)
 {
     return (struct vec2f) {
@@ -187,6 +219,24 @@ static INLINE bool vec3f_eq(const struct vec3f a, const struct vec3f b)
 static INLINE struct vec3f vec3f_inv(const struct vec3f v)
 {
     return (struct vec3f) { -v.x, -v.y, -v.z };
+}
+
+static INLINE struct vec3f vec3f_adds(const struct vec3f a, const float s)
+{
+    return (struct vec3f) {
+        a.x + s,
+        a.y + s,
+        a.z + s,
+    };
+}
+
+static INLINE struct vec3f vec3f_subs(const struct vec3f a, const float s)
+{
+    return (struct vec3f) {
+        a.x - s,
+        a.y - s,
+        a.z - s,
+    };
 }
 
 static INLINE struct vec3f vec3f_add(const struct vec3f a, const struct vec3f b)
@@ -295,6 +345,26 @@ static INLINE struct vec4f vec4f_add(const struct vec4f a, const struct vec4f b)
         a.y + b.y,
         a.z + b.z,
         a.w + b.w,
+    };
+}
+
+static INLINE struct vec4f vec4f_adds(const struct vec4f v, const float s)
+{
+    return (struct vec4f) {
+        v.x + s,
+        v.y + s,
+        v.z + s,
+        v.w + s,
+    };
+}
+
+static INLINE struct vec4f vec4f_subs(const struct vec4f v, const float s)
+{
+    return (struct vec4f) {
+        v.x - s,
+        v.y - s,
+        v.z - s,
+        v.w - s,
     };
 }
 
