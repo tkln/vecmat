@@ -37,12 +37,24 @@ static INLINE struct vec3f vec3f_divs(const struct vec3f v, const float s);
 static INLINE struct vec3f vec3f_cross(const struct vec3f a,
                                        const struct vec3f b);
 static INLINE struct vec3f vec3f_normalized(const struct vec3f v);
+static INLINE float vec3f_norm2(const struct vec3f v);
+static INLINE float vec3f_norm(const struct vec3f v);
 
 struct vec3f {
     float x, y, z;
 #ifdef __cplusplus
     INLINE vec3f(float x, float y, float z) : x(x), y(y), z(z)
     {
+    }
+
+    INLINE float norm2() const
+    {
+        return vec3f_norm2(*this);
+    }
+
+    INLINE float norm() const
+    {
+        return vec3f_norm(*this);
     }
 
     INLINE vec3f normalized() const
