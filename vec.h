@@ -107,6 +107,12 @@ static INLINE struct vec2i vec2i_mods(const struct vec2i v, const int s)
     };
 }
 
+static INLINE int vec2i_dot(const struct vec2i a, const struct vec2i b)
+{
+    struct vec2i c = vec2i_mul(a, b);
+    return c.x + c.y;
+}
+
 
 struct vec2f {
     float x, y;
@@ -202,6 +208,12 @@ static INLINE struct vec2f vec2f_mods(const struct vec2f v, const float s)
         fmodf(v.x, s),
         fmodf(v.y, s),
     };
+}
+
+static INLINE float vec2f_dot(const struct vec2f a, const struct vec2f b)
+{
+    struct vec2f c = vec2f_mul(a, b);
+    return c.x + c.y;
 }
 
 
@@ -309,6 +321,12 @@ static INLINE struct vec3f vec3f_mods(const struct vec3f v, const float s)
         fmodf(v.y, s),
         fmodf(v.z, s),
     };
+}
+
+static INLINE float vec3f_dot(const struct vec3f a, const struct vec3f b)
+{
+    struct vec3f c = vec3f_mul(a, b);
+    return c.x + c.y + c.z;
 }
 
 
@@ -426,6 +444,12 @@ static INLINE struct vec4f vec4f_mods(const struct vec4f v, const float s)
         fmodf(v.z, s),
         fmodf(v.w, s),
     };
+}
+
+static INLINE float vec4f_dot(const struct vec4f a, const struct vec4f b)
+{
+    struct vec4f c = vec4f_mul(a, b);
+    return c.x + c.y + c.z + c.w;
 }
 
 

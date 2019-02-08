@@ -53,6 +53,8 @@ void test_vec2i(void)
             "got %d, %d", c.x, c.y);
     ASSERTM(vec2i_eq(c = vec2i_mods(b, 2), (struct vec2i) {1, 0}),
             "got %d, %d", c.x, c.y);
+
+    ASSERT_EQ(vec2i_dot(b, b), 5);
 }
 
 void test_vec2f(void)
@@ -109,6 +111,8 @@ void test_vec2f(void)
             "got %f, %f", c.x, c.y);
     ASSERTM(vec2f_eq(c = vec2f_mods(b, 2), (struct vec2f) {1.0f, 0.0f}),
             "got %f, %f", c.x, c.y);
+
+    ASSERT_EQ(vec2f_dot(b, b), 5.0f);
 }
 
 void test_vec3f(void)
@@ -166,6 +170,8 @@ void test_vec3f(void)
             "got %f, %f, %f", c.x, c.y, c.z);
     ASSERTM(vec3f_eq(c = vec3f_mods(b, 2), (struct vec3f) {1.0f, 0.0f, 1.0f}),
             "got %f, %f, %f", c.x, c.y, c.z);
+
+    ASSERT_EQ(vec3f_dot(b, b), 14.0f);
 }
 
 void test_vec4f(void)
@@ -242,6 +248,8 @@ void test_vec4f(void)
     ASSERTM(vec4f_eq(c = vec4f_mods(b, 2),
                      (struct vec4f) {1.0f, 0.0f, 1.0f, 0.0f}),
             "got %f, %f, %f, %f", c.x, c.y, c.z, c.w);
+
+    ASSERT_EQ(vec4f_dot(b, b), 30.0f);
 }
 
 int main(int argc, char **argv)
