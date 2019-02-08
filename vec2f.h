@@ -128,6 +128,11 @@ static INLINE float vec2f_norm(const struct vec2f v)
     return sqrtf(vec2f_norm2(v));
 }
 
+static INLINE struct vec2f vec2f_normalized(const struct vec2f v)
+{
+    return vec2f_divs(v, vec2f_norm(v));
+}
+
 #ifdef __cplusplus
 } /* namespace vm */
 } /* extern "C" */

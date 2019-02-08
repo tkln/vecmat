@@ -148,6 +148,11 @@ static INLINE float vec4f_norm(const struct vec4f v)
     return sqrtf(vec4f_norm2(v));
 }
 
+static INLINE struct vec4f vec4f_normalized(const struct vec4f v)
+{
+    return vec4f_divs(v, vec4f_norm(v));
+}
+
 #ifdef __cplusplus
 } /* namespace vm */
 } /* extern "C" */

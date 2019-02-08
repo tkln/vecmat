@@ -139,6 +139,11 @@ static INLINE float vec3f_norm(const struct vec3f v)
     return sqrtf(vec3f_norm2(v));
 }
 
+static INLINE struct vec3f vec3f_normalized(const struct vec3f v)
+{
+    return vec3f_divs(v, vec3f_norm(v));
+}
+
 #ifdef __cplusplus
 } /* namespace vm */
 } /* extern "C" */

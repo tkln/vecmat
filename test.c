@@ -126,6 +126,9 @@ void test_vec2f(void)
 
     ASSERT_EQ(vec2f_norm2(b), 5.0f);
     ASSERT_EQ(vec2f_norm(b), sqrtf(5.0f));
+    ASSERTM(vec2f_eq(c = vec2f_normalized((struct vec2f) {2, 4}),
+                     (struct vec2f) {1.0 / sqrtf(5.0f), 2.0f / sqrtf(5.0)}),
+            "got %f, %f", c.x, c.y);
 }
 
 void test_vec3f(void)
@@ -188,6 +191,12 @@ void test_vec3f(void)
 
     ASSERT_EQ(vec3f_norm2(b), 14.0f);
     ASSERT_EQ(vec3f_norm(b), sqrtf(14.0f));
+
+    ASSERTM(vec3f_eq(c = vec3f_normalized((struct vec3f) {2, 4, 8}),
+                     (struct vec3f) {1.0 / sqrtf(21.0f),
+                                     2.0f / sqrtf(21.0),
+                                     4.0f / sqrtf(21.0)}),
+            "got %f, %f, %f", c.x, c.y, c.z);
 }
 
 void test_vec4f(void)
@@ -269,6 +278,12 @@ void test_vec4f(void)
 
     ASSERT_EQ(vec4f_norm2(b), 30.0f);
     ASSERT_EQ(vec4f_norm(b), sqrtf(30.0f));
+    ASSERTM(vec4f_eq(c = vec4f_normalized((struct vec4f) {2, 4, 8, 16}),
+                     (struct vec4f) {1.0 / sqrtf(85.0f),
+                                     2.0f / sqrtf(85.0),
+                                     4.0f / sqrtf(85.0),
+                                     8.0f / sqrtf(85.0)}),
+            "got %f, %f, %f, %f", c.x, c.y, c.z, c.w);
 }
 
 int main(int argc, char **argv)
