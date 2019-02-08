@@ -36,6 +36,11 @@ static INLINE struct vec2f vec2f_divs(const struct vec2f v, const float s);
 
 struct vec2f {
     float x, y;
+#ifdef __cplusplus
+    INLINE vec2f(float x, float y) : x(x), y(y)
+    {
+    }
+#endif /* __cplusplus */
 };
 
 static const struct vec2f vec2f_ones = { 1.0f, 1.0f };

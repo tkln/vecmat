@@ -36,6 +36,11 @@ static INLINE struct vec4f vec4f_divs(const struct vec4f v, const float s);
 
 struct vec4f {
     float x, y, z, w;
+#ifdef __cplusplus
+    INLINE vec4f(float x, float y, float z, float w) : x(x), y(y), z(z), w(w)
+    {
+    }
+#endif /* __cplusplus */
 };
 
 static const struct vec4f vec4f_ones = { 1.0f, 1.0f, 1.0f, 1.0f };

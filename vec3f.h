@@ -39,6 +39,11 @@ static INLINE struct vec3f vec3f_cross(const struct vec3f a,
 
 struct vec3f {
     float x, y, z;
+#ifdef __cplusplus
+    INLINE vec3f(float x, float y, float z) : x(x), y(y), z(z)
+    {
+    }
+#endif /* __cplusplus */
 };
 
 static const struct vec3f vec3f_ones = { 1.0f, 1.0f, 1.0f };
