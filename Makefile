@@ -7,10 +7,10 @@ LDFLAGS+=-lm
 
 all: test testpp
 
-test: test.c vec.h
+test: test.c vec2i.h vec2f.h vec3f.h vec4f.h
 	$(CC) $(CFLAGS) $< -o $@ $(LDFLAGS)
 
-testpp: testpp.cc vec.h
+testpp: testpp.cc vec2i.h vec2f.h vec3f.h vec4f.h
 	$(CXX) $(CXXFLAGS) $< -o $@ $(LDFLAGS)
 
 .PHONY: clean
