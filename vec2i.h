@@ -16,6 +16,24 @@ extern "C" {
 namespace vm {
 #endif /* __cplusplus */
 
+struct vec2i;
+static INLINE bool vec2i_eq(const struct vec2i a, const struct vec2i b);
+static INLINE struct vec2i vec2i_inv(const struct vec2i v);
+static INLINE struct vec2i vec2i_add(const struct vec2i a,
+                                     const struct vec2i b);
+static INLINE struct vec2i vec2i_sub(const struct vec2i a,
+                                     const struct vec2i b);
+static INLINE struct vec2i vec2i_adds(const struct vec2i a,
+                                      const int s);
+static INLINE struct vec2i vec2i_subs(const struct vec2i a,
+                                      const int s);
+static INLINE struct vec2i vec2i_mul(const struct vec2i a,
+                                     const struct vec2i b);
+static INLINE struct vec2i vec2i_div(const struct vec2i a,
+                                     const struct vec2i b);
+static INLINE struct vec2i vec2i_muls(const struct vec2i v, const int s);
+static INLINE struct vec2i vec2i_divs(const struct vec2i v, const int s);
+
 struct vec2i {
     int x, y;
 };

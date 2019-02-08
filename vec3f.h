@@ -17,6 +17,24 @@ extern "C" {
 namespace vm {
 #endif /* __cplusplus */
 
+struct vec3f;
+static INLINE bool vec3f_eq(const struct vec3f a, const struct vec3f b);
+static INLINE struct vec3f vec3f_inv(const struct vec3f v);
+static INLINE struct vec3f vec3f_add(const struct vec3f a,
+                                     const struct vec3f b);
+static INLINE struct vec3f vec3f_sub(const struct vec3f a,
+                                     const struct vec3f b);
+static INLINE struct vec3f vec3f_adds(const struct vec3f a,
+                                      const float s);
+static INLINE struct vec3f vec3f_subs(const struct vec3f a,
+                                      const float s);
+static INLINE struct vec3f vec3f_mul(const struct vec3f a,
+                                     const struct vec3f b);
+static INLINE struct vec3f vec3f_div(const struct vec3f a,
+                                     const struct vec3f b);
+static INLINE struct vec3f vec3f_muls(const struct vec3f v, const float s);
+static INLINE struct vec3f vec3f_divs(const struct vec3f v, const float s);
+
 struct vec3f {
     float x, y, z;
 };

@@ -16,6 +16,24 @@ extern "C" {
 namespace vm {
 #endif /* __cplusplus */
 
+struct vec2f;
+static INLINE bool vec2f_eq(const struct vec2f a, const struct vec2f b);
+static INLINE struct vec2f vec2f_inv(const struct vec2f v);
+static INLINE struct vec2f vec2f_add(const struct vec2f a,
+                                     const struct vec2f b);
+static INLINE struct vec2f vec2f_sub(const struct vec2f a,
+                                     const struct vec2f b);
+static INLINE struct vec2f vec2f_adds(const struct vec2f a,
+                                      const float s);
+static INLINE struct vec2f vec2f_subs(const struct vec2f a,
+                                      const float s);
+static INLINE struct vec2f vec2f_mul(const struct vec2f a,
+                                     const struct vec2f b);
+static INLINE struct vec2f vec2f_div(const struct vec2f a,
+                                     const struct vec2f b);
+static INLINE struct vec2f vec2f_muls(const struct vec2f v, const float s);
+static INLINE struct vec2f vec2f_divs(const struct vec2f v, const float s);
+
 struct vec2f {
     float x, y;
 };

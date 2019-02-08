@@ -16,6 +16,24 @@ extern "C" {
 namespace vm {
 #endif /* __cplusplus */
 
+struct vec4f;
+static INLINE bool vec4f_eq(const struct vec4f a, const struct vec4f b);
+static INLINE struct vec4f vec4f_inv(const struct vec4f v);
+static INLINE struct vec4f vec4f_add(const struct vec4f a,
+                                     const struct vec4f b);
+static INLINE struct vec4f vec4f_sub(const struct vec4f a,
+                                     const struct vec4f b);
+static INLINE struct vec4f vec4f_adds(const struct vec4f a,
+                                      const float s);
+static INLINE struct vec4f vec4f_subs(const struct vec4f a,
+                                      const float s);
+static INLINE struct vec4f vec4f_mul(const struct vec4f a,
+                                     const struct vec4f b);
+static INLINE struct vec4f vec4f_div(const struct vec4f a,
+                                     const struct vec4f b);
+static INLINE struct vec4f vec4f_muls(const struct vec4f v, const float s);
+static INLINE struct vec4f vec4f_divs(const struct vec4f v, const float s);
+
 struct vec4f {
     float x, y, z, w;
 };
