@@ -33,12 +33,18 @@ static INLINE struct vec4f vec4f_div(const struct vec4f a,
                                      const struct vec4f b);
 static INLINE struct vec4f vec4f_muls(const struct vec4f v, const float s);
 static INLINE struct vec4f vec4f_divs(const struct vec4f v, const float s);
+static INLINE struct vec4f vec4f_normalized(const struct vec4f v);
 
 struct vec4f {
     float x, y, z, w;
 #ifdef __cplusplus
     INLINE vec4f(float x, float y, float z, float w) : x(x), y(y), z(z), w(w)
     {
+    }
+
+    INLINE vec4f normalized() const
+    {
+        return vec4f_normalized(*this);
     }
 #endif /* __cplusplus */
 };

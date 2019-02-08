@@ -33,12 +33,18 @@ static INLINE struct vec2f vec2f_div(const struct vec2f a,
                                      const struct vec2f b);
 static INLINE struct vec2f vec2f_muls(const struct vec2f v, const float s);
 static INLINE struct vec2f vec2f_divs(const struct vec2f v, const float s);
+static INLINE struct vec2f vec2f_normalized(const struct vec2f v);
 
 struct vec2f {
     float x, y;
 #ifdef __cplusplus
     INLINE vec2f(float x, float y) : x(x), y(y)
     {
+    }
+
+    INLINE vec2f normalized() const
+    {
+        return vec2f_normalized(*this);
     }
 #endif /* __cplusplus */
 };
