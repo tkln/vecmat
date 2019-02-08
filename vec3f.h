@@ -274,6 +274,11 @@ INLINE vec3f operator%(const float s, const vec3f v)
     return vec3f(s, s, s) % v;
 }
 
+INLINE float dot(const vec3f a, const vec3f b)
+{
+    return vec3f_dot(a, b);
+}
+
 } /* namespace vm */
 #endif
 

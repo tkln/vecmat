@@ -254,6 +254,11 @@ INLINE vec2f operator%(const float s, const vec2f v)
     return vec2f(s, s) % v;
 }
 
+INLINE float dot(const vec2f a, const vec2f b)
+{
+    return vec2f_dot(a, b);
+}
+
 } /* namespace vm */
 #endif
 

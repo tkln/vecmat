@@ -274,6 +274,11 @@ INLINE vec4f operator%(const float s, const vec4f v)
     return vec4f(s, s, s, s) % v;
 }
 
+INLINE float dot(const vec4f a, const vec4f b)
+{
+    return vec4f_dot(a, b);
+}
+
 } /* namespace vm */
 #endif
 
