@@ -17,6 +17,8 @@ using namespace vm;
 void test_vec2i(void)
 {
     vec2i a = vec2i(1, 2);
+    vec2i b = a;
+
     ASSERT_EQ(a.x, 1);
     ASSERT_EQ(a.y, 2);
 
@@ -43,11 +45,18 @@ void test_vec2i(void)
     ASSERT_EQ(2 % a, vec2i(0, 0));
 
     ASSERT_EQ(dot(a, a), 5);
+
+    b += b;
+    ASSERT_EQ(b, 2 * a);
+    b -= b;
+    ASSERT_EQ(b, vec2i(0, 0));
 }
 
 void test_vec2f(void)
 {
     vec2f a = vec2f(1.0f, 2.0f);
+    vec2f b = a;
+
     ASSERT_EQ(a.x, 1.0f);
     ASSERT_EQ(a.y, 2.0f);
 
@@ -74,11 +83,18 @@ void test_vec2f(void)
     ASSERT_EQ(2.0f % a, vec2f(0.0f, 0.0f));
 
     ASSERT_EQ(dot(a, a), 5.0f);
+
+    b += b;
+    ASSERT_EQ(b, 2.0f * a);
+    b -= b;
+    ASSERT_EQ(b, vec2f(0.0f, 0.0f));
 }
 
 void test_vec3f(void)
 {
     vec3f a = vec3f(1.0f, 2.0f, 3.0f);
+    vec3f b = a;
+
     ASSERT_EQ(a.x, 1.0f);
     ASSERT_EQ(a.y, 2.0f);
     ASSERT_EQ(a.z, 3.0f);
@@ -109,11 +125,18 @@ void test_vec3f(void)
 
     ASSERT_EQ(cross(vec3f(1.0f, 0.0f, 0.0f), vec3f(0.0f, 1.0f, 0.0f)),
               vec3f(0.0f, 0.0f, 1.0f));
+
+    b += b;
+    ASSERT_EQ(b, 2.0f * a);
+    b -= b;
+    ASSERT_EQ(b, vec3f(0.0f, 0.0f, 0.0f));
 }
 
 void test_vec4f(void)
 {
     vec4f a = vec4f(1.0f, 2.0f, 3.0f, 4.0f);
+    vec4f b = a;
+
     ASSERT_EQ(a.x, 1.0f);
     ASSERT_EQ(a.y, 2.0f);
     ASSERT_EQ(a.z, 3.0f);
@@ -142,6 +165,11 @@ void test_vec4f(void)
     ASSERT_EQ(2.0f % a, vec4f(0.0f, 0.0f, 2.0f, 2.0f));
 
     ASSERT_EQ(dot(a, a), 30.0f);
+
+    b += b;
+    ASSERT_EQ(b, 2.0f * a);
+    b -= b;
+    ASSERT_EQ(b, vec4f(0.0f, 0.0f, 0.0f, 0.0f));
 }
 
 int main(int argc, char **argv)

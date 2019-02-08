@@ -229,6 +229,26 @@ INLINE vec4f operator-(const float s, const vec4f v)
     return vec4f_adds(v, -s);
 }
 
+INLINE vec4f operator+=(vec4f &a, const vec4f b)
+{
+    return a = a + b;
+}
+
+INLINE vec4f operator-=(vec4f &a, const vec4f b)
+{
+    return a = a - b;
+}
+
+INLINE vec4f operator+=(vec4f &a, const float b)
+{
+    return a = a + b;
+}
+
+INLINE vec4f operator-=(vec4f &a, const float b)
+{
+    return a = a - b;
+}
+
 INLINE vec4f operator*(const vec4f a, const vec4f b)
 {
     return vec4f_mul(a, b);

@@ -209,6 +209,26 @@ INLINE vec2f operator-(const float s, const vec2f v)
     return vec2f_adds(v, -s);
 }
 
+INLINE vec2f operator+=(vec2f &a, const vec2f b)
+{
+    return a = a + b;
+}
+
+INLINE vec2f operator-=(vec2f &a, const vec2f b)
+{
+    return a = a - b;
+}
+
+INLINE vec2f operator+=(vec2f &a, const float b)
+{
+    return a = a + b;
+}
+
+INLINE vec2f operator-=(vec2f &a, const float b)
+{
+    return a = a - b;
+}
+
 INLINE vec2f operator*(const vec2f a, const vec2f b)
 {
     return vec2f_mul(a, b);
