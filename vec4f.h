@@ -12,8 +12,8 @@
 #include "vecmat-compiler.h"
 
 #ifdef __cplusplus
-extern "C" {
 namespace vm {
+extern "C" {
 #endif /* __cplusplus */
 
 struct vec4f;
@@ -177,8 +177,19 @@ static INLINE struct vec4f vec4f_normalized(const struct vec4f v)
 }
 
 #ifdef __cplusplus
-} /* namespace vm */
 } /* extern "C" */
+
+INLINE bool operator==(const vec4f a, const vec4f b)
+{
+    return vec4f_eq(a, b);
+}
+
+INLINE bool operator!=(const vec4f a, const vec4f b)
+{
+    return !vec4f_eq(a, b);
+}
+
+} /* namespace vm */
 #endif
 
 #endif

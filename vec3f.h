@@ -13,8 +13,8 @@
 #include "vecmat-compiler.h"
 
 #ifdef __cplusplus
-extern "C" {
 namespace vm {
+extern "C" {
 #endif /* __cplusplus */
 
 struct vec3f;
@@ -177,8 +177,19 @@ static INLINE struct vec3f vec3f_cross(const struct vec3f a, const struct vec3f 
 }
 
 #ifdef __cplusplus
-} /* namespace vm */
 } /* extern "C" */
+
+INLINE bool operator==(const vec3f a, const vec3f b)
+{
+    return vec3f_eq(a, b);
+}
+
+INLINE bool operator!=(const vec3f a, const vec3f b)
+{
+    return !vec3f_eq(a, b);
+}
+
+} /* namespace vm */
 #endif
 
 #endif
