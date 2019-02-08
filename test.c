@@ -41,6 +41,13 @@ void test_vec2i(void)
             "got %d, %d", c.x, c.y);
     ASSERTM(vec2i_eq(c = vec2i_mod(a, b), (struct vec2i) {-0, -1}),
             "got %d, %d", c.x, c.y);
+
+    ASSERTM(vec2i_eq(c = vec2i_muls(b, 2), (struct vec2i) {2, 4}),
+            "got %d, %d", c.x, c.y);
+    ASSERTM(vec2i_eq(c = vec2i_divs(b, 2), (struct vec2i) {0, 1}),
+            "got %d, %d", c.x, c.y);
+    ASSERTM(vec2i_eq(c = vec2i_mods(b, 2), (struct vec2i) {1, 0}),
+            "got %d, %d", c.x, c.y);
 }
 
 void test_vec2f(void)
@@ -85,6 +92,13 @@ void test_vec2f(void)
             "got %f, %f", c.x, c.y);
     ASSERTM(vec2f_eq(c = vec2f_mod(a, b), (struct vec2f) {-0.0f, -1.0f}),
             "got %f, %f", c.x, c.y);
+
+    ASSERTM(vec2f_eq(c = vec2f_muls(b, 2), (struct vec2f) {2.0f, 4.0f}),
+            "got %f, %f", c.x, c.y);
+    ASSERTM(vec2f_eq(c = vec2f_divs(b, 2), (struct vec2f) {0.5f, 1.0f}),
+            "got %f, %f", c.x, c.y);
+    ASSERTM(vec2f_eq(c = vec2f_mods(b, 2), (struct vec2f) {1.0f, 0.0f}),
+            "got %f, %f", c.x, c.y);
 }
 
 void test_vec3f(void)
@@ -128,6 +142,14 @@ void test_vec3f(void)
     ASSERTM(vec3f_eq(c = vec3f_mod(b, b), (struct vec3f) {0.0f, 0.0f, 0.0f}),
             "got %f, %f, %f", c.x, c.y, c.z);
     ASSERTM(vec3f_eq(c = vec3f_mod(a, b), (struct vec3f) {-0.0f, -1.0f, -1.0f}),
+            "got %f, %f, %f", c.x, c.y, c.z);
+
+    ASSERTM(vec3f_eq(c = vec3f_muls(b, 2), (struct vec3f) {2.0f, 4.0f, 6.0f}),
+            "got %f, %f, %f", c.x, c.y, c.z);
+    ASSERTM(vec3f_eq(c = vec3f_divs(b, 2),
+                     (struct vec3f) {0.5f, 1.0f, 3.0f / 2.0f}),
+            "got %f, %f, %f", c.x, c.y, c.z);
+    ASSERTM(vec3f_eq(c = vec3f_mods(b, 2), (struct vec3f) {1.0f, 0.0f, 1.0f}),
             "got %f, %f, %f", c.x, c.y, c.z);
 }
 
@@ -187,6 +209,16 @@ void test_vec4f(void)
             "got %f, %f, %f, %f", c.x, c.y, c.z, c.w);
     ASSERTM(vec4f_eq(c = vec4f_mod(a, b),
                      (struct vec4f) {-0.0f, -1.0f, -1.0f, -1.0f}),
+            "got %f, %f, %f, %f", c.x, c.y, c.z, c.w);
+
+    ASSERTM(vec4f_eq(c = vec4f_muls(b, 2),
+                     (struct vec4f) {2.0f, 4.0f, 6.0f, 8.0f}),
+            "got %f, %f, %f, %f", c.x, c.y, c.z, c.w);
+    ASSERTM(vec4f_eq(c = vec4f_divs(b, 2),
+                     (struct vec4f) {0.5f, 1.0f, 3.0f / 2.0f, 2.0f}),
+            "got %f, %f, %f, %f", c.x, c.y, c.z, c.w);
+    ASSERTM(vec4f_eq(c = vec4f_mods(b, 2),
+                     (struct vec4f) {1.0f, 0.0f, 1.0f, 0.0f}),
             "got %f, %f, %f, %f", c.x, c.y, c.z, c.w);
 }
 
