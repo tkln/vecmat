@@ -31,6 +31,16 @@ void test_vec2i(void)
     ASSERT_EQ(vec2i(1, 2) - 1, vec2i(0, 1));
     ASSERT_EQ(1 + vec2i(1, 2), vec2i(2, 3));
     ASSERT_EQ(1 - vec2i(1, 2), vec2i(0, 1));
+
+    ASSERT_EQ(a * a, vec2i(1, 4));
+    ASSERT_EQ(a * 2, vec2i(2, 4));
+    ASSERT_EQ(2 * a, vec2i(2, 4));
+    ASSERT_EQ(a / a, vec2i(1, 1));
+    ASSERT_EQ(a / 2, vec2i(0, 1));
+    ASSERT_EQ(2 / a, vec2i(2, 1));
+    ASSERT_EQ(a % a, vec2i(0, 0));
+    ASSERT_EQ(a % 2, vec2i(1, 0));
+    ASSERT_EQ(2 % a, vec2i(0, 0));
 }
 
 void test_vec2f(void)
@@ -50,6 +60,16 @@ void test_vec2f(void)
     ASSERT_EQ(a - 1.0f, vec2f(0.0f, 1.0f));
     ASSERT_EQ(1.0f + a, vec2f(2.0f, 3.0f));
     ASSERT_EQ(1.0f - a, vec2f(0.0f, 1.0f));
+
+    ASSERT_EQ(a * a, vec2f(1.0f, 4.0f));
+    ASSERT_EQ(a * 2.0f, vec2f(2.0f, 4.0f));
+    ASSERT_EQ(2.0f * a, vec2f(2.0f, 4.0f));
+    ASSERT_EQ(a / a, vec2f(1.0f, 1.0f));
+    ASSERT_EQ(a / 2.0f, vec2f(0.5f, 1.0f));
+    ASSERT_EQ(2.0f / a, vec2f(2.0f, 1.0f));
+    ASSERT_EQ(a % a, vec2f(0.0f, 0.0f));
+    ASSERT_EQ(a % 2.0f, vec2f(1.0f, 0.0f));
+    ASSERT_EQ(2.0f % a, vec2f(0.0f, 0.0f));
 }
 
 void test_vec3f(void)
@@ -70,6 +90,16 @@ void test_vec3f(void)
     ASSERT_EQ(a - 1.0f, vec3f(0.0f, 1.0f, 2.0f));
     ASSERT_EQ(1.0f + a, vec3f(2.0f, 3.0f, 4.0f));
     ASSERT_EQ(1.0f - a, vec3f(0.0f, 1.0f, 2.0f));
+
+    ASSERT_EQ(a * a, vec3f(1.0f, 4.0f, 9.0f));
+    ASSERT_EQ(a * 2.0f, vec3f(2.0f, 4.0f, 6.0f));
+    ASSERT_EQ(2.0f * a, vec3f(2.0f, 4.0f, 6.0f));
+    ASSERT_EQ(a / a, vec3f(1.0f, 1.0f, 1.0f));
+    ASSERT_EQ(a / 2.0f, vec3f(0.5f, 1.0f, 1.5f));
+    ASSERT_EQ(2.0f / a, vec3f(2.0f, 1.0f, 2.0f / 3.0f));
+    ASSERT_EQ(a % a, vec3f(0.0f, 0.0f, 0.0f));
+    ASSERT_EQ(a % 2.0f, vec3f(1.0f, 0.0f, 1.0f));
+    ASSERT_EQ(2.0f % a, vec3f(0.0f, 0.0f, 2.0f));
 }
 
 void test_vec4f(void)
@@ -91,6 +121,16 @@ void test_vec4f(void)
     ASSERT_EQ(a - 1.0f, vec4f(0.0f, 1.0f, 2.0f, 3.0f));
     ASSERT_EQ(1.0f + a, vec4f(2.0f, 3.0f, 4.0f, 5.0f));
     ASSERT_EQ(1.0f - a, vec4f(0.0f, 1.0f, 2.0f, 3.0f));
+
+    ASSERT_EQ(a * a, vec4f(1.0f, 4.0f, 9.0f, 16.0f));
+    ASSERT_EQ(a * 2.0f, vec4f(2.0f, 4.0f, 6.0f, 8.0f));
+    ASSERT_EQ(2.0f * a, vec4f(2.0f, 4.0f, 6.0f, 8.0f));
+    ASSERT_EQ(a / a, vec4f(1.0f, 1.0f, 1.0f, 1.0f));
+    ASSERT_EQ(a / 2.0f, vec4f(0.5f, 1.0f, 1.5f, 2.0f));
+    ASSERT_EQ(2.0f / a, vec4f(2.0f, 1.0f, 2.0f / 3.0f, 0.5f));
+    ASSERT_EQ(a % a, vec4f(0.0f, 0.0f, 0.0f, 0.0f));
+    ASSERT_EQ(a % 2.0f, vec4f(1.0f, 0.0f, 1.0f, 0.0f));
+    ASSERT_EQ(2.0f % a, vec4f(0.0f, 0.0f, 2.0f, 2.0f));
 }
 
 int main(int argc, char **argv)

@@ -229,6 +229,51 @@ INLINE vec4f operator-(const float s, const vec4f v)
     return vec4f_adds(v, -s);
 }
 
+INLINE vec4f operator*(const vec4f a, const vec4f b)
+{
+    return vec4f_mul(a, b);
+}
+
+INLINE vec4f operator/(const vec4f a, const vec4f b)
+{
+    return vec4f_div(a, b);
+}
+
+INLINE vec4f operator%(const vec4f a, const vec4f b)
+{
+    return vec4f_mod(a, b);
+}
+
+INLINE vec4f operator*(const vec4f v, const float s)
+{
+    return vec4f_muls(v, s);
+}
+
+INLINE vec4f operator/(const vec4f v, const float s)
+{
+    return vec4f_divs(v, s);
+}
+
+INLINE vec4f operator%(const vec4f v, const float s)
+{
+    return vec4f_mods(v, s);
+}
+
+INLINE vec4f operator*(const float s, const vec4f v)
+{
+    return vec4f_muls(v, s);
+}
+
+INLINE vec4f operator/(const float s, const vec4f v)
+{
+    return vec4f(s, s, s, s) / v;
+}
+
+INLINE vec4f operator%(const float s, const vec4f v)
+{
+    return vec4f(s, s, s, s) % v;
+}
+
 } /* namespace vm */
 #endif
 

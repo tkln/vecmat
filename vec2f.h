@@ -209,6 +209,51 @@ INLINE vec2f operator-(const float s, const vec2f v)
     return vec2f_adds(v, -s);
 }
 
+INLINE vec2f operator*(const vec2f a, const vec2f b)
+{
+    return vec2f_mul(a, b);
+}
+
+INLINE vec2f operator/(const vec2f a, const vec2f b)
+{
+    return vec2f_div(a, b);
+}
+
+INLINE vec2f operator%(const vec2f a, const vec2f b)
+{
+    return vec2f_mod(a, b);
+}
+
+INLINE vec2f operator*(const vec2f v, const float s)
+{
+    return vec2f_muls(v, s);
+}
+
+INLINE vec2f operator/(const vec2f v, const float s)
+{
+    return vec2f_divs(v, s);
+}
+
+INLINE vec2f operator%(const vec2f v, const float s)
+{
+    return vec2f_mods(v, s);
+}
+
+INLINE vec2f operator*(const float s, const vec2f v)
+{
+    return vec2f_muls(v, s);
+}
+
+INLINE vec2f operator/(const float s, const vec2f v)
+{
+    return vec2f(s, s) / v;
+}
+
+INLINE vec2f operator%(const float s, const vec2f v)
+{
+    return vec2f(s, s) % v;
+}
+
 } /* namespace vm */
 #endif
 

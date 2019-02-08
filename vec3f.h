@@ -229,6 +229,51 @@ INLINE vec3f operator-(const float s, const vec3f v)
     return vec3f_adds(v, -s);
 }
 
+INLINE vec3f operator*(const vec3f a, const vec3f b)
+{
+    return vec3f_mul(a, b);
+}
+
+INLINE vec3f operator/(const vec3f a, const vec3f b)
+{
+    return vec3f_div(a, b);
+}
+
+INLINE vec3f operator%(const vec3f a, const vec3f b)
+{
+    return vec3f_mod(a, b);
+}
+
+INLINE vec3f operator*(const vec3f v, const float s)
+{
+    return vec3f_muls(v, s);
+}
+
+INLINE vec3f operator/(const vec3f v, const float s)
+{
+    return vec3f_divs(v, s);
+}
+
+INLINE vec3f operator%(const vec3f v, const float s)
+{
+    return vec3f_mods(v, s);
+}
+
+INLINE vec3f operator*(const float s, const vec3f v)
+{
+    return vec3f_muls(v, s);
+}
+
+INLINE vec3f operator/(const float s, const vec3f v)
+{
+    return vec3f(s, s, s) / v;
+}
+
+INLINE vec3f operator%(const float s, const vec3f v)
+{
+    return vec3f(s, s, s) % v;
+}
+
 } /* namespace vm */
 #endif
 
