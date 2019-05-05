@@ -202,6 +202,11 @@ void test_vec3f(void)
                                      (struct vec3f) {0.0f, 1.0f, 0.0f}),
                      (struct vec3f) {0.0f, 0.0f, 1.0f}),
             "got %f, %f, %f", c.x, c.y, c.z);
+
+    ASSERTM(vec3f_eq(c = vec3f_cross((struct vec3f) {1.0f, 2.0f, 3.0f},
+                                     (struct vec3f) {4.0f, 5.0f, 6.0f}),
+                     (struct vec3f) {-3.0f, 6.0f, -3.0f}),
+            "got %f, %f, %f", c.x, c.y, c.z);
 }
 
 void test_vec4f(void)
