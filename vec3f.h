@@ -194,7 +194,7 @@ static INLINE struct vec3f vec3f_normalized(const struct vec3f v)
 static INLINE struct vec3f vec3f_cross(const struct vec3f a, const struct vec3f b)
 {
     return (struct vec3f) { a.y * b.z - a.z * b.y,
-                            a.x * b.z - a.z * b.x,
+                            a.z * b.x - a.x * b.z,
                             a.x * b.y - a.y * b.x };
 }
 
