@@ -67,6 +67,16 @@ struct vec4f {
 
 static const struct vec4f vec4f_ones = { 1.0f, 1.0f, 1.0f, 1.0f };
 
+static INLINE struct vec4f vec4f_init(float x, float y, float z, float w)
+{
+    return (struct vec4f) { x, y, z, w };
+}
+
+static INLINE struct vec4f vec4f_inits(float s)
+{
+    return (struct vec4f) { s, s, s, s };
+}
+
 static INLINE bool vec4f_eq(const struct vec4f a, const struct vec4f b)
 {
     return (a.x == b.x) && (a.y == b.y) && (a.z == b.z) && (a.w == b.w);

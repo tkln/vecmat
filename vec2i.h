@@ -49,6 +49,16 @@ struct vec2i {
 
 static const struct vec2i vec2i_ones = { 1, 1 };
 
+static INLINE struct vec2i vec2i_init(int x, int y)
+{
+    return (struct vec2i) { x, y };
+}
+
+static INLINE struct vec2i vec2i_inits(int s)
+{
+    return (struct vec2i) { s, s };
+}
+
 static INLINE struct vec2i vec2i_inv(const struct vec2i v)
 {
     return (struct vec2i) { -v.x, -v.y };

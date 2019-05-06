@@ -67,6 +67,16 @@ struct vec2f {
 
 static const struct vec2f vec2f_ones = { 1.0f, 1.0f };
 
+static INLINE struct vec2f vec2f_init(float x, float y)
+{
+    return (struct vec2f) { x, y };
+}
+
+static INLINE struct vec2f vec2f_inits(float s)
+{
+    return (struct vec2f) { s, s };
+}
+
 static INLINE bool vec2f_eq(const struct vec2f a, const struct vec2f b)
 {
     return (a.x == b.x) && (a.y == b.y);

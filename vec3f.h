@@ -70,6 +70,16 @@ struct vec3f {
 
 static const struct vec3f vec3f_ones = { 1.0f, 1.0f, 1.0f };
 
+static INLINE struct vec3f vec3f_init(float x, float y, float z)
+{
+    return (struct vec3f) { x, y, z };
+}
+
+static INLINE struct vec3f vec3f_inits(float s)
+{
+    return (struct vec3f) { s, s, s };
+}
+
 static INLINE bool vec3f_eq(const struct vec3f a, const struct vec3f b)
 {
     return (a.x == b.x) && (a.y == b.y) && (a.z == b.z);
