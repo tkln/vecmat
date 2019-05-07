@@ -107,6 +107,17 @@ static INLINE struct vec4f vec4f_add(const struct vec4f a, const struct vec4f b)
     };
 }
 
+static INLINE struct vec4f vec4f_add3(const struct vec4f a, const struct vec4f b,
+                                      const struct vec4f c)
+{
+    return (struct vec4f) {
+        a.x + b.x + c.x,
+        a.y + b.y + c.y,
+        a.z + b.z + c.z,
+        a.w + b.w + c.w,
+    };
+}
+
 static INLINE struct vec4f vec4f_adds(const struct vec4f v, const float s)
 {
     return (struct vec4f) {

@@ -77,6 +77,15 @@ static INLINE struct vec2i vec2i_add(const struct vec2i a, const struct vec2i b)
     };
 }
 
+static INLINE struct vec2i vec2i_add3(const struct vec2i a, const struct vec2i b,
+                                      const struct vec2i c)
+{
+    return (struct vec2i) {
+        a.x + b.x + c.x,
+        a.y + b.y + c.y,
+    };
+}
+
 static INLINE struct vec2i vec2i_sub(const struct vec2i a, const struct vec2i b)
 {
     return (struct vec2i) {

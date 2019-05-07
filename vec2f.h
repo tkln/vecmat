@@ -95,6 +95,15 @@ static INLINE struct vec2f vec2f_add(const struct vec2f a, const struct vec2f b)
     };
 }
 
+static INLINE struct vec2f vec2f_add3(const struct vec2f a, const struct vec2f b,
+                                      const struct vec2f c)
+{
+    return (struct vec2f) {
+        a.x + b.x + c.x,
+        a.y + b.y + c.y,
+    };
+}
+
 static INLINE struct vec2f vec2f_sub(const struct vec2f a, const struct vec2f b)
 {
     return (struct vec2f) {

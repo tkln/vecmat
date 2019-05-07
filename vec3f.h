@@ -117,6 +117,16 @@ static INLINE struct vec3f vec3f_add(const struct vec3f a, const struct vec3f b)
     };
 }
 
+static INLINE struct vec3f vec3f_add3(const struct vec3f a, const struct vec3f b,
+                                      const struct vec3f c)
+{
+    return (struct vec3f) {
+        a.x + b.x + c.x,
+        a.y + b.y + c.y,
+        a.z + b.z + c.z,
+    };
+}
+
 static INLINE struct vec3f vec3f_sub(const struct vec3f a, const struct vec3f b)
 {
     return (struct vec3f) {
