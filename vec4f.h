@@ -65,6 +65,7 @@ struct vec4f {
 #endif /* __cplusplus */
 };
 
+static const struct vec4f vec4f_zeros = { 0.0f, 0.0f, 0.0f, 0.0f };
 static const struct vec4f vec4f_ones = { 1.0f, 1.0f, 1.0f, 1.0f };
 
 static INLINE struct vec4f vec4f_init(float x, float y, float z, float w)

@@ -47,6 +47,7 @@ struct vec2i {
 #endif /* __cplusplus */
 };
 
+static const struct vec2i vec2i_zeros = { 0, 0 };
 static const struct vec2i vec2i_ones = { 1, 1 };
 
 static INLINE struct vec2i vec2i_init(int x, int y)

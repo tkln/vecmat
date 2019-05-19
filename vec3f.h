@@ -68,6 +68,7 @@ struct vec3f {
 #endif /* __cplusplus */
 };
 
+static const struct vec3f vec3f_zeros = { 0.0f, 0.0f, 0.0f };
 static const struct vec3f vec3f_ones = { 1.0f, 1.0f, 1.0f };
 
 static INLINE struct vec3f vec3f_init(float x, float y, float z)

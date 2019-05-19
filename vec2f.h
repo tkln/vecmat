@@ -65,6 +65,7 @@ struct vec2f {
 #endif /* __cplusplus */
 };
 
+static const struct vec2f vec2f_zeros = { 0.0f, 0.0f };
 static const struct vec2f vec2f_ones = { 1.0f, 1.0f };
 
 static INLINE struct vec2f vec2f_init(float x, float y)
