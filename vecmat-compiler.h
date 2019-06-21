@@ -6,6 +6,13 @@
 #ifndef VECMAT_COMPILER_H
 #define VECMAT_COMPILER_H
 
-#define VECMAT_INLINE inline /* TODO: Use compiler specific forced inlines */
+#if defined(__clang__) || (defined(__GNUC__) && !defined(__INTEL_COMPILER))
+#define VECMAT_INLINE __attribute__((always_inline)) inline
+#elif defined(_MSC_VER) || defined(__INTEL_COMPILER)
+#define VECMAT_INLINE __forceinline
+#else
+#warning Unknown compiler, cannot force inline
+#define VECMAT_INLINE inline
+#endif
 
 #endif
