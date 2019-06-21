@@ -6,23 +6,32 @@
 #ifndef VECMAT_COMPILER_H
 #define VECMAT_COMPILER_H
 
+#if defined(__clang__)
+#   define VECMAT_COMPILER_CLANG
+#elif (defined(__GNUC__) && !(defined(__INTEL_COMPILER)) || defined(__clang))
+#   define VECMAT_COMPILER_GCC
+#elif defined(_MSC_VER)
+#   define VECMAT_COMPILER_MSVC
+#elif defined(__INTEL_COMPILER)
+#   define VECMAT_COMPILER_ICC
+#else
+#   warning Unknown compiler, cannot set compiler specific attributes
+#endif
+
 #if defined(VECMAT_NOINLINE)
-#   if defined(__clang__) || (defined(__GNUC__) && !defined(__INTEL_COMPILER))
+#   if defined(VECMAT_COMPILER_GCC) || defined(VECMAT_COMPILER_CLANG)
 #       define VECMAT_INLINE __attribute__((noinline))
-#   elif defined(_MSC_VER)
+#   elif defined(VECMAT_COMPILER_MSVC)
 #       define VECMAT_INLINE __declspec(noinline)
-#   elif defined(__INTEL_COMPILER)
-#       warning Unsuported compiler for force noinline
-#   else
-#       warning Unknown compiler, cannot force noinline
+#   elif defined(VECMAT_COMPILER_ICC)
+#       warning noinline not supported on icc
 #   endif
 #else
-#   if defined(__clang__) || (defined(__GNUC__) && !defined(__INTEL_COMPILER))
+#   if defined(VECMAT_COMPILER_GCC) || defined(VECMAT_COMPILER_CLANG)
 #       define VECMAT_INLINE __attribute__((always_inline)) inline
-#   elif defined(_MSC_VER) || defined(__INTEL_COMPILER)
+#   elif defined(VECMAT_COMPILER_ICC) || defined(VECMAT_COMPILER_MSVC)
 #       define VECMAT_INLINE __forceinline
 #   else
-#       warning Unknown compiler, cannot force inline
 #       define VECMAT_INLINE inline
 #   endif
 #endif
