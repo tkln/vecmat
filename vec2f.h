@@ -39,7 +39,7 @@ static VECMAT_INLINE struct vec2f vec2f_normalized(const struct vec2f v);
 static VECMAT_INLINE float vec2f_norm2(const struct vec2f v);
 static VECMAT_INLINE float vec2f_norm(const struct vec2f v);
 
-struct vec2f {
+struct VECMAT_ALIGN vec2f {
     float x, y;
 #ifdef __cplusplus
     VECMAT_INLINE vec2f()
