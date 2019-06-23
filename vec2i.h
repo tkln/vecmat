@@ -35,7 +35,11 @@ static VECMAT_INLINE struct vec2i vec2i_divs(const struct vec2i v, const int s);
 
 VECMAT_ALIGN_WARN_SUPPRESS
 struct VECMAT_ALIGN vec2i {
-    int x, y;
+    union {
+        struct {
+            int x, y;
+        };
+    };
 #ifdef __cplusplus
     VECMAT_INLINE vec2i()
     {
@@ -47,8 +51,8 @@ struct VECMAT_ALIGN vec2i {
 #endif /* __cplusplus */
 };
 
-static const struct vec2i vec2i_zeros = { 0, 0 };
-static const struct vec2i vec2i_ones = { 1, 1 };
+static const struct vec2i vec2i_zeros = VECMAT_INIT(0, 0);
+static const struct vec2i vec2i_ones = VECMAT_INIT(1, 1);
 
 static VECMAT_INLINE struct vec2i vec2i_init(int x, int y)
 {

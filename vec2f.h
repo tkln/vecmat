@@ -40,7 +40,11 @@ static VECMAT_INLINE float vec2f_norm(const struct vec2f v);
 
 VECMAT_ALIGN_WARN_SUPPRESS
 struct VECMAT_ALIGN vec2f {
-    float x, y;
+    union {
+        struct {
+            float x, y;
+        };
+    };
 #ifdef __cplusplus
     VECMAT_INLINE vec2f()
     {
@@ -67,8 +71,8 @@ struct VECMAT_ALIGN vec2f {
 #endif /* __cplusplus */
 };
 
-static const struct vec2f vec2f_zeros = { 0.0f, 0.0f };
-static const struct vec2f vec2f_ones = { 1.0f, 1.0f };
+static const struct vec2f vec2f_zeros = VECMAT_INIT(0.0f, 0.0f);
+static const struct vec2f vec2f_ones = VECMAT_INIT(1.0f, 1.0f);
 
 static VECMAT_INLINE struct vec2f vec2f_init(float x, float y)
 {

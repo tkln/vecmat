@@ -53,4 +53,14 @@
 #   endif
 #endif
 
+/*
+ * GCC Warns about missing braces when compiling as C but won't accept the
+ * additional braces in C++ mode.
+ */
+#if defined(VECMAT_COMPILER_GCC) && !defined(__cplusplus)
+#   define VECMAT_INIT(x, ...) {{{ x, __VA_ARGS__ }}}
+#else
+#   define VECMAT_INIT(x, ...) { x, __VA_ARGS__ }
+#endif
+
 #endif

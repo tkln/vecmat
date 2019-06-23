@@ -43,7 +43,11 @@ static VECMAT_INLINE float vec3f_norm(const struct vec3f v);
 
 VECMAT_ALIGN_WARN_SUPPRESS
 struct VECMAT_ALIGN vec3f {
-    float x, y, z;
+    union {
+        struct {
+            float x, y, z;
+        };
+    };
 #ifdef __cplusplus
     VECMAT_INLINE vec3f()
     {
@@ -70,8 +74,8 @@ struct VECMAT_ALIGN vec3f {
 #endif /* __cplusplus */
 };
 
-static const struct vec3f vec3f_zeros = { 0.0f, 0.0f, 0.0f };
-static const struct vec3f vec3f_ones = { 1.0f, 1.0f, 1.0f };
+static const struct vec3f vec3f_zeros = VECMAT_INIT(0.0f, 0.0f, 0.0f);
+static const struct vec3f vec3f_ones = VECMAT_INIT(1.0f, 1.0f, 1.0f);
 
 static VECMAT_INLINE struct vec3f vec3f_init(float x, float y, float z)
 {
