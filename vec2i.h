@@ -13,7 +13,6 @@
 
 #ifdef __cplusplus
 namespace vm {
-extern "C" {
 #endif /* __cplusplus */
 
 struct vec2i;
@@ -181,7 +180,6 @@ static VECMAT_INLINE int vec2i_norm2(const struct vec2i a)
 }
 
 #ifdef __cplusplus
-} /* extern "C" */
 
 VECMAT_INLINE bool operator==(const vec2i a, const vec2i b)
 {

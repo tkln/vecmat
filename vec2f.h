@@ -13,7 +13,6 @@
 
 #ifdef __cplusplus
 namespace vm {
-extern "C" {
 #endif /* __cplusplus */
 
 struct vec2f;
@@ -216,7 +215,6 @@ static VECMAT_INLINE struct vec2f vec2f_normalized(const struct vec2f v)
 }
 
 #ifdef __cplusplus
-} /* extern "C" */
 
 VECMAT_INLINE bool operator==(const vec2f &a, const vec2f &b)
 {
