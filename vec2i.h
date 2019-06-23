@@ -53,17 +53,20 @@ static const struct vec2i vec2i_ones = { 1, 1 };
 
 static VECMAT_INLINE struct vec2i vec2i_init(int x, int y)
 {
-    return (struct vec2i) { x, y };
+    struct vec2i v;
+    v.x = x;
+    v.y = y;
+    return v;
 }
 
 static VECMAT_INLINE struct vec2i vec2i_inits(int s)
 {
-    return (struct vec2i) { s, s };
+    return vec2i_init(s, s);
 }
 
 static VECMAT_INLINE struct vec2i vec2i_inv(const struct vec2i v)
 {
-    return (struct vec2i) { -v.x, -v.y };
+    return vec2i_init(-v.x, -v.y);
 }
 
 static VECMAT_INLINE bool vec2i_eq(const struct vec2i a, const struct vec2i b)
@@ -74,96 +77,96 @@ static VECMAT_INLINE bool vec2i_eq(const struct vec2i a, const struct vec2i b)
 static VECMAT_INLINE struct vec2i vec2i_add(const struct vec2i a,
                                             const struct vec2i b)
 {
-    return (struct vec2i) {
+    return vec2i_init(
         a.x + b.x,
-        a.y + b.y,
-    };
+        a.y + b.y
+    );
 }
 
 static VECMAT_INLINE struct vec2i vec2i_add3(const struct vec2i a,
                                              const struct vec2i b,
                                              const struct vec2i c)
 {
-    return (struct vec2i) {
+    return vec2i_init(
         a.x + b.x + c.x,
-        a.y + b.y + c.y,
-    };
+        a.y + b.y + c.y
+    );
 }
 
 static VECMAT_INLINE struct vec2i vec2i_sub(const struct vec2i a,
                                             const struct vec2i b)
 {
-    return (struct vec2i) {
+    return vec2i_init(
         a.x - b.x,
-        a.y - b.y,
-    };
+        a.y - b.y
+    );
 }
 
 static VECMAT_INLINE struct vec2i vec2i_adds(const struct vec2i v, const int s)
 {
-    return (struct vec2i) {
+    return vec2i_init(
         v.x + s,
-        v.y + s,
-    };
+        v.y + s
+    );
 }
 
 static VECMAT_INLINE struct vec2i vec2i_subs(const struct vec2i v, const int s)
 {
-    return (struct vec2i) {
+    return vec2i_init(
         v.x - s,
-        v.y - s,
-    };
+        v.y - s
+    );
 }
 
 static VECMAT_INLINE struct vec2i vec2i_mul(const struct vec2i a,
                                             const struct vec2i b)
 {
-    return (struct vec2i) {
+    return vec2i_init(
         a.x * b.x,
-        a.y * b.y,
-    };
+        a.y * b.y
+    );
 }
 
 static VECMAT_INLINE struct vec2i vec2i_div(const struct vec2i a,
                                             const struct vec2i b)
 {
-    return (struct vec2i) {
+    return vec2i_init(
         a.x / b.x,
-        a.y / b.y,
-    };
+        a.y / b.y
+    );
 }
 
 static VECMAT_INLINE struct vec2i vec2i_mod(const struct vec2i a,
                                             const struct vec2i b)
 {
-    return (struct vec2i) {
+    return vec2i_init(
         a.x % b.x,
-        a.y % b.y,
-    };
+        a.y % b.y
+    );
 }
 
 static VECMAT_INLINE struct vec2i vec2i_muls(const struct vec2i v, const int s)
 {
-    return (struct vec2i) {
+    return vec2i_init(
         v.x * s,
-        v.y * s,
-    };
+        v.y * s
+    );
 }
 
 static VECMAT_INLINE struct vec2i vec2i_divs(const struct vec2i v, const int s)
 {
-    return (struct vec2i) {
+    return vec2i_init(
         v.x / s,
-        v.y / s,
-    };
+        v.y / s
+    );
 }
 
 static VECMAT_INLINE struct vec2i vec2i_mods(const struct vec2i v, const int s)
 {
-    return (struct vec2i) {
+    return vec2i_init(
         v.x % s,
-        v.y % s,
-    };
+        v.y % s
+    );
 }
 
 static VECMAT_INLINE int vec2i_dot(const struct vec2i a, const struct vec2i b)

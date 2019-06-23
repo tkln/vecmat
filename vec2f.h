@@ -73,12 +73,15 @@ static const struct vec2f vec2f_ones = { 1.0f, 1.0f };
 
 static VECMAT_INLINE struct vec2f vec2f_init(float x, float y)
 {
-    return (struct vec2f) { x, y };
+    struct vec2f v;
+    v.x = x;
+    v.y = y;
+    return v;
 }
 
 static VECMAT_INLINE struct vec2f vec2f_inits(float s)
 {
-    return (struct vec2f) { s, s };
+    return vec2f_init(s, s);
 }
 
 static VECMAT_INLINE bool vec2f_eq(const struct vec2f a, const struct vec2f b)
@@ -88,107 +91,107 @@ static VECMAT_INLINE bool vec2f_eq(const struct vec2f a, const struct vec2f b)
 
 static VECMAT_INLINE struct vec2f vec2f_inv(const struct vec2f v)
 {
-    return (struct vec2f) { -v.x, -v.y };
+    return vec2f_init(-v.x, -v.y);
 }
 
 static VECMAT_INLINE struct vec2f vec2f_add(const struct vec2f a,
                                             const struct vec2f b)
 {
-    return (struct vec2f) {
+    return vec2f_init(
         a.x + b.x,
-        a.y + b.y,
-    };
+        a.y + b.y
+    );
 }
 
 static VECMAT_INLINE struct vec2f vec2f_add3(const struct vec2f a,
                                              const struct vec2f b,
                                              const struct vec2f c)
 {
-    return (struct vec2f) {
+    return vec2f_init(
         a.x + b.x + c.x,
-        a.y + b.y + c.y,
-    };
+        a.y + b.y + c.y
+    );
 }
 
 static VECMAT_INLINE struct vec2f vec2f_sub(const struct vec2f a,
                                             const struct vec2f b)
 {
-    return (struct vec2f) {
+    return vec2f_init(
         a.x - b.x,
-        a.y - b.y,
-    };
+        a.y - b.y
+    );
 }
 
 static VECMAT_INLINE struct vec2f vec2f_adds(const struct vec2f a,
                                              const float s)
 {
-    return (struct vec2f) {
+    return vec2f_init(
         a.x + s,
-        a.y + s,
-    };
+        a.y + s
+    );
 }
 
 static VECMAT_INLINE struct vec2f vec2f_subs(const struct vec2f a,
                                              const float s)
 {
-    return (struct vec2f) {
+    return vec2f_init(
         a.x - s,
-        a.y - s,
-    };
+        a.y - s
+    );
 }
 
 static VECMAT_INLINE struct vec2f vec2f_mul(const struct vec2f a,
                                             const struct vec2f b)
 {
-    return (struct vec2f) {
+    return vec2f_init(
         a.x * b.x,
-        a.y * b.y,
-    };
+        a.y * b.y
+    );
 }
 
 static VECMAT_INLINE struct vec2f vec2f_div(const struct vec2f a,
                                             const struct vec2f b)
 {
-    return (struct vec2f) {
+    return vec2f_init(
         a.x / b.x,
-        a.y / b.y,
-    };
+        a.y / b.y
+    );
 }
 
 static VECMAT_INLINE struct vec2f vec2f_mod(const struct vec2f a,
                                             const struct vec2f b)
 {
-    return (struct vec2f) {
+    return vec2f_init(
         fmodf(a.x, b.x),
-        fmodf(a.y, b.y),
-    };
+        fmodf(a.y, b.y)
+    );
 }
 
 static VECMAT_INLINE struct vec2f vec2f_muls(const struct vec2f v,
                                              const float s)
 {
-    return (struct vec2f) {
+    return vec2f_init(
         v.x * s,
-        v.y * s,
-    };
+        v.y * s
+    );
 }
 
 static VECMAT_INLINE struct vec2f vec2f_divs(const struct vec2f v,
                                              const float s)
 {
-    return (struct vec2f) {
+    return vec2f_init(
         v.x / s,
-        v.y / s,
-    };
+        v.y / s
+    );
 }
 
 static VECMAT_INLINE struct vec2f vec2f_mods(const struct vec2f v,
                                              const float s)
 {
-    return (struct vec2f) {
+    return vec2f_init(
         fmodf(v.x, s),
-        fmodf(v.y, s),
-    };
+        fmodf(v.y, s)
+    );
 }
 
 static VECMAT_INLINE float vec2f_dot(const struct vec2f a, const struct vec2f b)

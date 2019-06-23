@@ -74,12 +74,17 @@ static const struct vec4f vec4f_ones = { 1.0f, 1.0f, 1.0f, 1.0f };
 
 static VECMAT_INLINE struct vec4f vec4f_init(float x, float y, float z, float w)
 {
-    return (struct vec4f) { x, y, z, w };
+    struct vec4f v;
+    v.x = x;
+    v.y = y;
+    v.z = z;
+    v.w = w;
+    return v;
 }
 
 static VECMAT_INLINE struct vec4f vec4f_inits(float s)
 {
-    return (struct vec4f) { s, s, s, s };
+    return vec4f_init(s, s, s, s);
 }
 
 static VECMAT_INLINE bool vec4f_eq(const struct vec4f a, const struct vec4f b)
@@ -89,129 +94,129 @@ static VECMAT_INLINE bool vec4f_eq(const struct vec4f a, const struct vec4f b)
 
 static VECMAT_INLINE struct vec4f vec4f_inv(const struct vec4f v)
 {
-    return (struct vec4f) { -v.x, -v.y, -v.z, -v.w };
+    return vec4f_init(-v.x, -v.y, -v.z, -v.w);
 }
 
 static VECMAT_INLINE struct vec4f vec4f_sub(const struct vec4f a,
                                             const struct vec4f b)
 {
-    return (struct vec4f) {
+    return vec4f_init(
         a.x - b.x,
         a.y - b.y,
         a.z - b.z,
-        a.w - b.w,
-    };
+        a.w - b.w
+    );
 }
 
 static VECMAT_INLINE struct vec4f vec4f_add(const struct vec4f a,
                                             const struct vec4f b)
 {
-    return (struct vec4f) {
+    return vec4f_init(
         a.x + b.x,
         a.y + b.y,
         a.z + b.z,
-        a.w + b.w,
-    };
+        a.w + b.w
+    );
 }
 
 static VECMAT_INLINE struct vec4f vec4f_add3(const struct vec4f a,
                                              const struct vec4f b,
                                              const struct vec4f c)
 {
-    return (struct vec4f) {
+    return vec4f_init(
         a.x + b.x + c.x,
         a.y + b.y + c.y,
         a.z + b.z + c.z,
-        a.w + b.w + c.w,
-    };
+        a.w + b.w + c.w
+    );
 }
 
 static VECMAT_INLINE struct vec4f vec4f_adds(const struct vec4f v,
                                              const float s)
 {
-    return (struct vec4f) {
+    return vec4f_init(
         v.x + s,
         v.y + s,
         v.z + s,
-        v.w + s,
-    };
+        v.w + s
+    );
 }
 
 static VECMAT_INLINE struct vec4f vec4f_subs(const struct vec4f v,
                                              const float s)
 {
-    return (struct vec4f) {
+    return vec4f_init(
         v.x - s,
         v.y - s,
         v.z - s,
-        v.w - s,
-    };
+        v.w - s
+    );
 }
 
 static VECMAT_INLINE struct vec4f vec4f_mul(const struct vec4f a,
                                             const struct vec4f b)
 {
-    return (struct vec4f) {
+    return vec4f_init(
         a.x * b.x,
         a.y * b.y,
         a.z * b.z,
-        a.w * b.w,
-    };
+        a.w * b.w
+    );
 }
 
 static VECMAT_INLINE struct vec4f vec4f_div(const struct vec4f a,
                                             const struct vec4f b)
 {
-    return (struct vec4f) {
+    return vec4f_init(
         a.x / b.x,
         a.y / b.y,
         a.z / b.z,
-        a.w / b.w,
-    };
+        a.w / b.w
+    );
 }
 
 static VECMAT_INLINE struct vec4f vec4f_mod(const struct vec4f a,
                                             const struct vec4f b)
 {
-    return (struct vec4f) {
+    return vec4f_init(
         fmodf(a.x, b.x),
         fmodf(a.y, b.y),
         fmodf(a.z, b.z),
-        fmodf(a.w, b.w),
-    };
+        fmodf(a.w, b.w)
+    );
 }
 
 static VECMAT_INLINE struct vec4f vec4f_muls(const struct vec4f v,
                                              const float s)
 {
-    return (struct vec4f) {
+    return vec4f_init(
         v.x * s,
         v.y * s,
         v.z * s,
-        v.w * s,
-    };
+        v.w * s
+    );
 }
 
 static VECMAT_INLINE struct vec4f vec4f_divs(const struct vec4f v,
                                              const float s)
 {
-    return (struct vec4f) {
+    return vec4f_init(
         v.x / s,
         v.y / s,
         v.z / s,
-        v.w / s,
-    };
+        v.w / s
+    );
 }
 
 static VECMAT_INLINE struct vec4f vec4f_mods(const struct vec4f v,
                                              const float s)
 {
-    return (struct vec4f) {
+    return vec4f_init(
         fmodf(v.x, s),
         fmodf(v.y, s),
         fmodf(v.z, s),
-        fmodf(v.w, s),
-    };
+        fmodf(v.w, s)
+    );
 }
 
 static VECMAT_INLINE float vec4f_dot(const struct vec4f a, const struct vec4f b)

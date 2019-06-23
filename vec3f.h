@@ -76,12 +76,16 @@ static const struct vec3f vec3f_ones = { 1.0f, 1.0f, 1.0f };
 
 static VECMAT_INLINE struct vec3f vec3f_init(float x, float y, float z)
 {
-    return (struct vec3f) { x, y, z };
+    struct vec3f v;
+    v.x = x;
+    v.y = y;
+    v.z = z;
+    return v;
 }
 
 static VECMAT_INLINE struct vec3f vec3f_inits(float s)
 {
-    return (struct vec3f) { s, s, s };
+    return vec3f_init(s, s, s);
 }
 
 static VECMAT_INLINE bool vec3f_eq(const struct vec3f a, const struct vec3f b)
@@ -91,118 +95,118 @@ static VECMAT_INLINE bool vec3f_eq(const struct vec3f a, const struct vec3f b)
 
 static VECMAT_INLINE struct vec3f vec3f_inv(const struct vec3f v)
 {
-    return (struct vec3f) { -v.x, -v.y, -v.z };
+    return vec3f_init(-v.x, -v.y, -v.z);
 }
 
 static VECMAT_INLINE struct vec3f vec3f_adds(const struct vec3f a,
                                              const float s)
 {
-    return (struct vec3f) {
+    return vec3f_init(
         a.x + s,
         a.y + s,
-        a.z + s,
-    };
+        a.z + s
+    );
 }
 
 static VECMAT_INLINE struct vec3f vec3f_subs(const struct vec3f a,
                                              const float s)
 {
-    return (struct vec3f) {
+    return vec3f_init(
         a.x - s,
         a.y - s,
-        a.z - s,
-    };
+        a.z - s
+    );
 }
 
 static VECMAT_INLINE struct vec3f vec3f_add(const struct vec3f a,
                                             const struct vec3f b)
 {
-    return (struct vec3f) {
+    return vec3f_init(
         a.x + b.x,
         a.y + b.y,
-        a.z + b.z,
-    };
+        a.z + b.z
+    );
 }
 
 static VECMAT_INLINE struct vec3f vec3f_add3(const struct vec3f a,
                                              const struct vec3f b,
                                              const struct vec3f c)
 {
-    return (struct vec3f) {
+    return vec3f_init(
         a.x + b.x + c.x,
         a.y + b.y + c.y,
-        a.z + b.z + c.z,
-    };
+        a.z + b.z + c.z
+    );
 }
 
 static VECMAT_INLINE struct vec3f vec3f_sub(const struct vec3f a,
                                             const struct vec3f b)
 {
-    return (struct vec3f) {
+    return vec3f_init(
         a.x - b.x,
         a.y - b.y,
-        a.z - b.z,
-    };
+        a.z - b.z
+    );
 }
 
 static VECMAT_INLINE struct vec3f vec3f_mul(const struct vec3f a,
                                             const struct vec3f b)
 {
-    return (struct vec3f) {
+    return vec3f_init(
         a.x * b.x,
         a.y * b.y,
-        a.z * b.z,
-    };
+        a.z * b.z
+    );
 }
 
 static VECMAT_INLINE struct vec3f vec3f_div(const struct vec3f a,
                                             const struct vec3f b)
 {
-    return (struct vec3f) {
+    return vec3f_init(
         a.x / b.x,
         a.y / b.y,
-        a.z / b.z,
-    };
+        a.z / b.z
+    );
 }
 
 static VECMAT_INLINE struct vec3f vec3f_mod(const struct vec3f a,
                                             const struct vec3f b)
 {
-    return (struct vec3f) {
+    return vec3f_init(
         fmodf(a.x, b.x),
         fmodf(a.y, b.y),
-        fmodf(a.z, b.z),
-    };
+        fmodf(a.z, b.z)
+    );
 }
 
 static VECMAT_INLINE struct vec3f vec3f_muls(const struct vec3f v,
                                              const float s)
 {
-    return (struct vec3f) {
+    return vec3f_init(
         v.x * s,
         v.y * s,
-        v.z * s,
-    };
+        v.z * s
+    );
 }
 
 static VECMAT_INLINE struct vec3f vec3f_divs(const struct vec3f v,
                                              const float s)
 {
-    return (struct vec3f) {
+    return vec3f_init(
         v.x / s,
         v.y / s,
-        v.z / s,
-    };
+        v.z / s
+    );
 }
 
 static VECMAT_INLINE struct vec3f vec3f_mods(const struct vec3f v,
                                              const float s)
 {
-    return (struct vec3f) {
+    return vec3f_init(
         fmodf(v.x, s),
         fmodf(v.y, s),
-        fmodf(v.z, s),
-    };
+        fmodf(v.z, s)
+    );
 }
 
 static VECMAT_INLINE float vec3f_dot(const struct vec3f a, const struct vec3f b)
@@ -229,9 +233,11 @@ static VECMAT_INLINE struct vec3f vec3f_normalized(const struct vec3f v)
 static VECMAT_INLINE struct vec3f vec3f_cross(const struct vec3f a,
                                               const struct vec3f b)
 {
-    return (struct vec3f) { a.y * b.z - a.z * b.y,
-                            a.z * b.x - a.x * b.z,
-                            a.x * b.y - a.y * b.x };
+    return vec3f_init(
+        a.y * b.z - a.z * b.y,
+        a.z * b.x - a.x * b.z,
+        a.x * b.y - a.y * b.x
+    );
 }
 
 #ifdef __cplusplus
