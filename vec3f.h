@@ -110,6 +110,16 @@ static VECMAT_INLINE struct vec3f vec3f_adds(const struct vec3f a,
     );
 }
 
+static VECMAT_INLINE struct vec3f vec3f_ssub(const float s,
+                                             const struct vec3f a)
+{
+    return vec3f_init(
+        s - a.x,
+        s - a.y,
+        s - a.z
+    );
+}
+
 static VECMAT_INLINE struct vec3f vec3f_subs(const struct vec3f a,
                                              const float s)
 {

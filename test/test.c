@@ -9,6 +9,7 @@
 #include "vec2f.h"
 #include "vec3f.h"
 #include "vec4f.h"
+#include "mat4f.h"
 
 #include "test.h"
 
@@ -296,12 +297,50 @@ void test_vec4f(void)
             "got %f, %f, %f, %f", c.x, c.y, c.z, c.w);
 }
 
+void test_mat4f(void)
+{
+    struct mat4f a = mat4f_ones;
+    struct mat4f b = mat4f_init(0.0f,  1.0f,  2.0f,  3.0f,
+                                4.0f,  5.0f,  6.0f,  7.0f,
+                                8.0f,  9.0f,  10.0f, 11.0f,
+                                12.0f, 13.0f, 14.0f, 15.0f);
+
+    ASSERT_EQ(b.v[0][0], 0.0f);
+    ASSERT_EQ(b.v[0][1], 4.0f);
+    ASSERT_EQ(b.v[0][2], 8.0f);
+    ASSERT_EQ(b.v[0][3], 12.0f);
+    ASSERT_EQ(b.v[1][0], 1.0f);
+    ASSERT_EQ(b.v[1][1], 5.0f);
+    ASSERT_EQ(b.v[1][2], 9.0f);
+    ASSERT_EQ(b.v[1][3], 13.0f);
+    ASSERT_EQ(b.v[2][0], 2.0f);
+    ASSERT_EQ(b.v[2][1], 6.0f);
+    ASSERT_EQ(b.v[2][2], 10.0f);
+    ASSERT_EQ(b.v[2][3], 14.0f);
+    ASSERT_EQ(b.v[3][0], 3.0f);
+    ASSERT_EQ(b.v[3][1], 7.0f);
+    ASSERT_EQ(b.v[3][2], 11.0f);
+    ASSERT_EQ(b.v[3][3], 15.0f);
+
+    ASSERT(mat4f_eq(a, a));
+    ASSERT(mat4f_eq(b, b));
+
+    ASSERT(mat4f_eq(mat4f_transpose(mat4f_identity), mat4f_identity));
+    ASSERT(mat4f_eq(mat4f_transpose(b), mat4f_init(0.0f, 4.0f, 8.0f,  12.0f,
+                                                   1.0f, 5.0f, 9.0f,  13.0f,
+                                                   2.0f, 6.0f, 10.0f, 14.0f,
+                                                   3.0f, 7.0f, 11.0f, 15.0f)));
+    ASSERT(mat4f_eq(mat4f_add(b, mat4f_inv(b)), mat4f_zeros));
+    ASSERT(mat4f_eq(mat4f_mul(b, mat4f_identity), b));
+}
+
 int main(int argc, char **argv)
 {
     test_vec2i();
     test_vec2f();
     test_vec3f();
     test_vec4f();
+    test_mat4f();
 
     return EXIT_SUCCESS;
 }
