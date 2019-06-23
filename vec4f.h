@@ -39,6 +39,7 @@ static VECMAT_INLINE struct vec4f vec4f_normalized(const struct vec4f v);
 static VECMAT_INLINE float vec4f_norm2(const struct vec4f v);
 static VECMAT_INLINE float vec4f_norm(const struct vec4f v);
 
+VECMAT_ALIGN_WARN_SUPPRESS
 struct VECMAT_ALIGN vec4f {
     float x, y, z, w;
 #ifdef __cplusplus

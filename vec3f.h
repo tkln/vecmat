@@ -42,6 +42,7 @@ static VECMAT_INLINE struct vec3f vec3f_normalized(const struct vec3f v);
 static VECMAT_INLINE float vec3f_norm2(const struct vec3f v);
 static VECMAT_INLINE float vec3f_norm(const struct vec3f v);
 
+VECMAT_ALIGN_WARN_SUPPRESS
 struct VECMAT_ALIGN vec3f {
     float x, y, z;
 #ifdef __cplusplus
