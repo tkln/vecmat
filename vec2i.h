@@ -213,22 +213,22 @@ VECMAT_INLINE vec2i operator-(const vec2i a, const vec2i b)
     return vec2i_sub(a, b);
 }
 
-VECMAT_INLINE vec2i operator+(const vec2i v, const float s)
+VECMAT_INLINE vec2i operator+(const vec2i v, const int s)
 {
     return vec2i_adds(v, s);
 }
 
-VECMAT_INLINE vec2i operator-(const vec2i v, const float s)
+VECMAT_INLINE vec2i operator-(const vec2i v, const int s)
 {
     return vec2i_subs(v, s);
 }
 
-VECMAT_INLINE vec2i operator+(const float s, const vec2i v)
+VECMAT_INLINE vec2i operator+(const int s, const vec2i v)
 {
     return vec2i_adds(v, s);
 }
 
-VECMAT_INLINE vec2i operator-(const float s, const vec2i v)
+VECMAT_INLINE vec2i operator-(const int s, const vec2i v)
 {
     return vec2i_adds(v, -s);
 }
@@ -268,32 +268,32 @@ VECMAT_INLINE vec2i operator%(const vec2i a, const vec2i b)
     return vec2i_mod(a, b);
 }
 
-VECMAT_INLINE vec2i operator*(const vec2i v, const float s)
+VECMAT_INLINE vec2i operator*(const vec2i v, const int s)
 {
     return vec2i_muls(v, s);
 }
 
-VECMAT_INLINE vec2i operator/(const vec2i v, const float s)
+VECMAT_INLINE vec2i operator/(const vec2i v, const int s)
 {
     return vec2i_divs(v, s);
 }
 
-VECMAT_INLINE vec2i operator%(const vec2i v, const float s)
+VECMAT_INLINE vec2i operator%(const vec2i v, const int s)
 {
     return vec2i_mods(v, s);
 }
 
-VECMAT_INLINE vec2i operator*(const float s, const vec2i v)
+VECMAT_INLINE vec2i operator*(const int s, const vec2i v)
 {
     return vec2i_muls(v, s);
 }
 
-VECMAT_INLINE vec2i operator/(const float s, const vec2i v)
+VECMAT_INLINE vec2i operator/(const int s, const vec2i v)
 {
     return vec2i(s, s) / v;
 }
 
-VECMAT_INLINE vec2i operator%(const float s, const vec2i v)
+VECMAT_INLINE vec2i operator%(const int s, const vec2i v)
 {
     return vec2i(s, s) % v;
 }
