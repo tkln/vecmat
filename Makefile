@@ -16,6 +16,9 @@ test: test.c $(HEADERS)
 testpp: testpp.cc $(HEADERS)
 	$(CXX) $(CXXFLAGS) $< -o $@ $(LDFLAGS)
 
+link-test-c.o: link-test-c.c $(HEADERS)
+link-test-cpp.o: link-test-cpp.cc $(HEADERS)
+
 link-test: $(LINK_TEST_OBJS)
 	$(CXX) $(CXXFLAGS) $^ -o $@ $(LDFLAGS)
 
