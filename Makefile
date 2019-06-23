@@ -5,7 +5,9 @@ CFLAGS+=-Wall -O2
 CXXFLAGS+=$(CFLAGS)
 LDFLAGS+=-lm
 
-all: test testpp
+LINK_TEST_OBJS=link-test-c.o link-test-cpp.o
+
+all: test testpp link-test
 
 test: test.c vec2i.h vec2f.h vec3f.h vec4f.h
 	$(CC) $(CFLAGS) $< -o $@ $(LDFLAGS)
@@ -13,6 +15,9 @@ test: test.c vec2i.h vec2f.h vec3f.h vec4f.h
 testpp: testpp.cc vec2i.h vec2f.h vec3f.h vec4f.h
 	$(CXX) $(CXXFLAGS) $< -o $@ $(LDFLAGS)
 
+link-test: $(LINK_TEST_OBJS)
+	$(CXX) $(CXXFLAGS) $^ -o $@ $(LDFLAGS)
+
 .PHONY: clean
 clean:
-	rm -f test testpp
+	rm -f test testpp link-test $(LINK_TEST_OBJS)
