@@ -6,7 +6,7 @@ CXXFLAGS+=$(CFLAGS)
 LDFLAGS+=-lm
 
 HEADERS=../vecmat-compiler.h ../vec2f.h ../vec3f.h ../vec4f.h ../vec2i.h \
-	    ../mat4f.h
+	    ../mat3f.h ../mat4f.h
 LINK_TEST_OBJS=link-test-c.o link-test-cpp.o
 
 all: test testpp link-test

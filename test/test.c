@@ -9,6 +9,7 @@
 #include "vec2f.h"
 #include "vec3f.h"
 #include "vec4f.h"
+#include "mat3f.h"
 #include "mat4f.h"
 
 #include "test.h"
@@ -334,12 +335,42 @@ void test_mat4f(void)
     ASSERT(mat4f_eq(mat4f_mul(b, mat4f_identity), b));
 }
 
+void test_mat3f(void)
+{
+    struct mat3f a = mat3f_ones;
+    struct mat3f b = mat3f_init(0.0f,  1.0f,  2.0f,
+                                3.0f,  4.0f,  5.0f,
+                                6.0f,  7.0f,  8.0f);
+    float f;
+
+    ASSERTM_EQ(f = b.v[0][0], 0.0f, "got: %f", f);
+    ASSERTM_EQ(f = b.v[0][1], 3.0f, "got: %f", f);
+    ASSERTM_EQ(f = b.v[0][2], 6.0f, "got: %f", f);
+    ASSERTM_EQ(f = b.v[1][0], 1.0f, "got: %f", f);
+    ASSERTM_EQ(f = b.v[1][1], 4.0f, "got: %f", f);
+    ASSERTM_EQ(f = b.v[1][2], 7.0f, "got: %f", f);
+    ASSERTM_EQ(f = b.v[2][0], 2.0f, "got: %f", f);
+    ASSERTM_EQ(f = b.v[2][1], 5.0f, "got: %f", f);
+    ASSERTM_EQ(f = b.v[2][2], 8.0f, "got: %f", f);
+
+    ASSERT(mat3f_eq(a, a));
+    ASSERT(mat3f_eq(b, b));
+
+    ASSERT(mat3f_eq(mat3f_transpose(mat3f_identity), mat3f_identity));
+    ASSERT(mat3f_eq(mat3f_transpose(b), mat3f_init(0.0f, 3.0f, 6.0f,
+                                                   1.0f, 4.0f, 7.0f,
+                                                   2.0f, 5.0f, 8.0f)));
+    ASSERT(mat3f_eq(mat3f_add(b, mat3f_inv(b)), mat3f_zeros));
+    ASSERT(mat3f_eq(mat3f_mul(b, mat3f_identity), b));
+}
+
 int main(int argc, char **argv)
 {
     test_vec2i();
     test_vec2f();
     test_vec3f();
     test_vec4f();
+    test_mat3f();
     test_mat4f();
 
     return EXIT_SUCCESS;
