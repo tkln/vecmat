@@ -10,6 +10,7 @@
 
 #include "vecmat-compiler.h"
 #include "vec3f.h"
+#include "mat2f.h"
 
 #ifdef __cplusplus
 namespace vm {
@@ -53,9 +54,9 @@ struct VECMAT_ALIGN mat3f {
     VECMAT_INLINE mat3f(float v00, float v01, float v02,
                         float v10, float v11, float v12,
                         float v20, float v21, float v22) :
-        v {{ v00, v10, v20 },
-           { v01, v11, v21 },
-           { v02, v12, v22 }}
+        v{{v00, v10, v20},
+          {v01, v11, v21},
+          {v02, v12, v22}}
     {
     }
 
@@ -179,6 +180,15 @@ static VECMAT_INLINE struct mat3f mat3f_transpose(const struct mat3f m)
     return mat3f_init(m.v[0][0], m.v[0][1], m.v[0][2],
                       m.v[1][0], m.v[1][1], m.v[1][2],
                       m.v[2][0], m.v[2][1], m.v[2][2]);
+}
+
+static VECMAT_INLINE float mat3f_det(const struct mat3f m)
+{
+    struct mat2f a = mat2f_init(m.v[1][1], m.v[1][2], m.v[2][1], m.v[2][2]);
+    struct mat2f b = mat2f_init(m.v[1][0], m.v[1][2], m.v[2][0], m.v[2][2]);
+    struct mat2f c = mat2f_init(m.v[1][0], m.v[1][1], m.v[2][0], m.v[2][1]);
+    return m.v[0][0] * mat2f_det(a) - m.v[0][1] * mat2f_det(b) +
+           m.v[0][2] * mat2f_det(c);
 }
 
 #ifdef __cplusplus

@@ -49,8 +49,8 @@ struct VECMAT_ALIGN mat2f {
 
     VECMAT_INLINE mat2f(float v00, float v01,
                         float v10, float v11) :
-        v {{ v00, v10 },
-           { v01, v11 }}
+        v{{v00, v10},
+          {v01, v11}}
     {
     }
 
@@ -155,6 +155,11 @@ static VECMAT_INLINE struct mat2f mat2f_transpose(const struct mat2f m)
 {
     return mat2f_init(m.v[0][0], m.v[0][1],
                       m.v[1][0], m.v[1][1]);
+}
+
+static VECMAT_INLINE float mat2f_det(const struct mat2f m)
+{
+    return m.v[0][0] * m.v[1][1] - m.v[0][1] * m.v[1][0];
 }
 
 #ifdef __cplusplus
