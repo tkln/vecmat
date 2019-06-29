@@ -41,6 +41,7 @@ static VECMAT_INLINE struct mat3f mat3f_einv(const struct mat3f m);
 static VECMAT_INLINE struct mat3f mat3f_divs(const struct mat3f m,
                                              const float s);
 static VECMAT_INLINE struct mat3f mat3f_transpose(const struct mat3f m);
+static VECMAT_INLINE float mat3f_det(const struct mat3f m);
 
 VECMAT_ALIGN_WARN_SUPPRESS
 struct VECMAT_ALIGN mat3f {

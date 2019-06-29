@@ -219,7 +219,7 @@ static VECMAT_INLINE struct mat4f mat4f_transpose(const struct mat4f m)
                       m.v[3][0], m.v[3][1], m.v[3][2], m.v[3][3]);
 }
 
-static VECMAT_INLINE float mat4f_det(const struct mat3f m)
+static VECMAT_INLINE float mat4f_det(const struct mat4f m)
 {
     struct mat3f a = mat3f_init(m.v[1][1], m.v[1][2], m.v[1][3],
                                 m.v[2][1], m.v[2][2], m.v[2][3],
