@@ -46,6 +46,7 @@ static VECMAT_INLINE struct mat4f mat4f_divs(const struct mat4f m,
 static VECMAT_INLINE struct mat4f mat4f_einv(const struct mat4f m);
 static VECMAT_INLINE struct mat4f mat4f_transpose(const struct mat4f m);
 static VECMAT_INLINE struct mat4f mat4f_adj(const struct mat4f m);
+static VECMAT_INLINE struct mat4f mat4f_inv(const struct mat4f m);
 
 VECMAT_ALIGN_WARN_SUPPRESS
 struct VECMAT_ALIGN mat4f {
@@ -278,6 +279,11 @@ static VECMAT_INLINE struct mat4f mat4f_adj(const struct mat4f m)
                       -v01, v11, -v21, v31,
                       v02, -v12, v22, -v32,
                       -v03, v13, -v23, v33);
+}
+
+static VECMAT_INLINE struct mat4f mat4f_inv(const struct mat4f m)
+{
+    return mat4f_divs(mat4f_adj(m), mat4f_det(m));
 }
 
 #ifdef __cplusplus

@@ -43,6 +43,7 @@ static VECMAT_INLINE struct mat3f mat3f_divs(const struct mat3f m,
 static VECMAT_INLINE struct mat3f mat3f_transpose(const struct mat3f m);
 static VECMAT_INLINE float mat3f_det(const struct mat3f m);
 static VECMAT_INLINE struct mat3f mat3f_adj(const struct mat3f m);
+static VECMAT_INLINE struct mat3f mat3f_inv(const struct mat3f m);
 
 VECMAT_ALIGN_WARN_SUPPRESS
 struct VECMAT_ALIGN mat3f {
@@ -230,6 +231,11 @@ static VECMAT_INLINE struct mat3f mat3f_adj(const struct mat3f m)
     return mat3f_init(mat2f_det(a), -mat2f_det(b), mat2f_det(c),
                       -mat2f_det(d), mat2f_det(e), -mat2f_det(f),
                       mat2f_det(g), -mat2f_det(h), mat2f_det(i));
+}
+
+static VECMAT_INLINE struct mat3f mat3f_inv(const struct mat3f m)
+{
+    return mat3f_divs(mat3f_adj(m), mat3f_det(m));
 }
 
 #ifdef __cplusplus
