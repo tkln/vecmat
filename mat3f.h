@@ -37,6 +37,7 @@ static VECMAT_INLINE struct vec3f mat3f_mulv(const struct mat3f m,
                                              const struct vec3f v);
 static VECMAT_INLINE struct mat3f mat3f_mul(const struct mat3f a,
                                             const struct mat3f b);
+static VECMAT_INLINE struct mat3f mat3f_einv(const struct mat3f m);
 static VECMAT_INLINE struct mat3f mat3f_divs(const struct mat3f m,
                                              const float s);
 static VECMAT_INLINE struct mat3f mat3f_transpose(const struct mat3f m);
@@ -133,7 +134,7 @@ static VECMAT_INLINE struct mat3f mat3f_sub(const struct mat3f a,
                            vec3f_sub(a.col[2], b.col[2]));
 }
 
-static VECMAT_INLINE struct mat3f mat3f_inv(const struct mat3f m)
+static VECMAT_INLINE struct mat3f mat3f_einv(const struct mat3f m)
 {
     return mat3f_init_cols(vec3f_muls(m.col[0], -1.0f),
                            vec3f_muls(m.col[1], -1.0f),
@@ -220,7 +221,7 @@ VECMAT_INLINE mat3f operator+(const mat3f v)
 
 VECMAT_INLINE mat3f operator-(const mat3f v)
 {
-    return mat3f_inv(v);
+    return mat3f_einv(v);
 }
 
 VECMAT_INLINE mat3f operator+(const mat3f a, const mat3f b)

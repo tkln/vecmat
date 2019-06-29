@@ -35,6 +35,7 @@ static VECMAT_INLINE struct mat2f mat2f_mul(const struct mat2f a,
                                             const struct mat2f b);
 static VECMAT_INLINE struct mat2f mat2f_divs(const struct mat2f m,
                                              const float s);
+static VECMAT_INLINE struct mat2f mat2f_einv(const struct mat2f m);
 static VECMAT_INLINE struct mat2f mat2f_transpose(const struct mat2f m);
 
 VECMAT_ALIGN_WARN_SUPPRESS
@@ -115,7 +116,7 @@ static VECMAT_INLINE struct mat2f mat2f_sub(const struct mat2f a,
                            vec2f_sub(a.col[1], b.col[1]));
 }
 
-static VECMAT_INLINE struct mat2f mat2f_inv(const struct mat2f m)
+static VECMAT_INLINE struct mat2f mat2f_einv(const struct mat2f m)
 {
     return mat2f_init_cols(vec2f_muls(m.col[0], -1.0f),
                            vec2f_muls(m.col[1], -1.0f));
@@ -190,7 +191,7 @@ VECMAT_INLINE mat2f operator+(const mat2f v)
 
 VECMAT_INLINE mat2f operator-(const mat2f v)
 {
-    return mat2f_inv(v);
+    return mat2f_einv(v);
 }
 
 VECMAT_INLINE mat2f operator+(const mat2f a, const mat2f b)

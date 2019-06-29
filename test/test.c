@@ -332,7 +332,7 @@ void test_mat4f(void)
                                                    1.0f, 5.0f, 9.0f,  13.0f,
                                                    2.0f, 6.0f, 10.0f, 14.0f,
                                                    3.0f, 7.0f, 11.0f, 15.0f)));
-    ASSERT(mat4f_eq(mat4f_add(b, mat4f_inv(b)), mat4f_zeros));
+    ASSERT(mat4f_eq(mat4f_add(b, mat4f_einv(b)), mat4f_zeros));
     ASSERT(mat4f_eq(mat4f_mul(b, mat4f_identity), b));
 }
 
@@ -361,7 +361,7 @@ void test_mat3f(void)
     ASSERT(mat3f_eq(mat3f_transpose(b), mat3f_init(0.0f, 3.0f, 6.0f,
                                                    1.0f, 4.0f, 7.0f,
                                                    2.0f, 5.0f, 8.0f)));
-    ASSERT(mat3f_eq(mat3f_add(b, mat3f_inv(b)), mat3f_zeros));
+    ASSERT(mat3f_eq(mat3f_add(b, mat3f_einv(b)), mat3f_zeros));
     ASSERT(mat3f_eq(mat3f_mul(b, mat3f_identity), b));
 }
 
@@ -382,7 +382,7 @@ void test_mat2f(void)
 
     ASSERT(mat2f_eq(mat2f_transpose(mat2f_identity), mat2f_identity));
     ASSERT(mat2f_eq(mat2f_transpose(b), mat2f_init(0.0f, 2.0f, 1.0f, 3.0f)));
-    ASSERT(mat2f_eq(mat2f_add(b, mat2f_inv(b)), mat2f_zeros));
+    ASSERT(mat2f_eq(mat2f_add(b, mat2f_einv(b)), mat2f_zeros));
     ASSERT(mat2f_eq(mat2f_mul(b, mat2f_identity), b));
 }
 
