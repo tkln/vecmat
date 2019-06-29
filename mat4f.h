@@ -41,6 +41,8 @@ static VECMAT_INLINE struct vec4f mat4f_mulv(const struct mat4f m,
                                              const struct vec4f v);
 static VECMAT_INLINE struct mat4f mat4f_mul(const struct mat4f a,
                                             const struct mat4f b);
+static VECMAT_INLINE struct mat4f mat4f_divs(const struct mat4f m,
+                                             const float s);
 static VECMAT_INLINE struct mat4f mat4f_transpose(const struct mat4f m);
 
 VECMAT_ALIGN_WARN_SUPPRESS
@@ -197,6 +199,15 @@ static VECMAT_INLINE struct mat4f mat4f_mul(const struct mat4f a,
 {
     return mat4f_init_cols(mat4f_mulv(a, b.col[0]), mat4f_mulv(a, b.col[1]),
                            mat4f_mulv(a, b.col[2]), mat4f_mulv(a, b.col[3]));
+}
+
+static VECMAT_INLINE struct mat4f mat4f_divs(const struct mat4f m,
+                                             const float s)
+{
+    return mat4f_init_cols(vec4f_divs(m.col[0], s),
+                           vec4f_divs(m.col[1], s),
+                           vec4f_divs(m.col[2], s),
+                           vec4f_divs(m.col[3], s));
 }
 
 static VECMAT_INLINE struct mat4f mat4f_transpose(const struct mat4f m)
