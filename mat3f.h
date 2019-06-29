@@ -42,6 +42,7 @@ static VECMAT_INLINE struct mat3f mat3f_divs(const struct mat3f m,
                                              const float s);
 static VECMAT_INLINE struct mat3f mat3f_transpose(const struct mat3f m);
 static VECMAT_INLINE float mat3f_det(const struct mat3f m);
+static VECMAT_INLINE struct mat3f mat3f_adj(const struct mat3f m);
 
 VECMAT_ALIGN_WARN_SUPPRESS
 struct VECMAT_ALIGN mat3f {
@@ -201,6 +202,34 @@ static VECMAT_INLINE float mat3f_det(const struct mat3f m)
     struct mat2f c = mat2f_init(m.v[1][0], m.v[1][1], m.v[2][0], m.v[2][1]);
     return m.v[0][0] * mat2f_det(a) - m.v[0][1] * mat2f_det(b) +
            m.v[0][2] * mat2f_det(c);
+}
+
+static VECMAT_INLINE struct mat3f mat3f_adj(const struct mat3f m)
+{
+    struct mat2f a = mat2f_init(m.v[1][1], m.v[1][2],
+                                m.v[2][1], m.v[2][2]);
+    struct mat2f b = mat2f_init(m.v[0][1], m.v[0][2],
+                                m.v[2][1], m.v[2][2]);
+    struct mat2f c = mat2f_init(m.v[0][1], m.v[0][2],
+                                m.v[1][1], m.v[1][2]);
+
+    struct mat2f d = mat2f_init(m.v[1][0], m.v[1][2],
+                                m.v[2][0], m.v[2][2]);
+    struct mat2f e = mat2f_init(m.v[0][0], m.v[0][2],
+                                m.v[2][0], m.v[2][2]);
+    struct mat2f f = mat2f_init(m.v[0][0], m.v[0][2],
+                                m.v[1][0], m.v[1][2]);
+
+    struct mat2f g = mat2f_init(m.v[1][0], m.v[1][1],
+                                m.v[2][0], m.v[2][1]);
+    struct mat2f h = mat2f_init(m.v[0][0], m.v[0][1],
+                                m.v[2][0], m.v[2][1]);
+    struct mat2f i = mat2f_init(m.v[0][0], m.v[0][1],
+                                m.v[1][0], m.v[1][1]);
+
+    return mat3f_init(mat2f_det(a), -mat2f_det(b), mat2f_det(c),
+                      -mat2f_det(d), mat2f_det(e), -mat2f_det(f),
+                      mat2f_det(g), -mat2f_det(h), mat2f_det(i));
 }
 
 #ifdef __cplusplus

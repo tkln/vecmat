@@ -45,6 +45,7 @@ static VECMAT_INLINE struct mat4f mat4f_divs(const struct mat4f m,
                                              const float s);
 static VECMAT_INLINE struct mat4f mat4f_einv(const struct mat4f m);
 static VECMAT_INLINE struct mat4f mat4f_transpose(const struct mat4f m);
+static VECMAT_INLINE struct mat4f mat4f_adj(const struct mat4f m);
 
 VECMAT_ALIGN_WARN_SUPPRESS
 struct VECMAT_ALIGN mat4f {
@@ -235,6 +236,48 @@ static VECMAT_INLINE float mat4f_det(const struct mat4f m)
                                 m.v[3][0], m.v[3][1], m.v[3][2]);
     return m.v[0][0] * mat3f_det(a) - m.v[0][1] * mat3f_det(b) +
            m.v[0][2] * mat3f_det(c) - m.v[0][3] * mat3f_det(d);
+}
+
+static VECMAT_INLINE struct mat3f
+mat4f_get_submat3(const struct mat4f m,
+                  const size_t c0, const size_t c1, const size_t c2,
+                  const size_t r0, const size_t r1, const size_t r2)
+{
+    const size_t c[3] = { c0, c1, c2 };
+    const size_t r[3] = { r0, r1, r2 };
+    return mat3f_init_cols(
+            vec3f_init(m.v[c[0]][r[0]], m.v[c[0]][r[1]], m.v[c[0]][r[2]]),
+            vec3f_init(m.v[c[1]][r[0]], m.v[c[1]][r[1]], m.v[c[1]][r[2]]),
+            vec3f_init(m.v[c[2]][r[0]], m.v[c[2]][r[1]], m.v[c[2]][r[2]])
+    );
+}
+
+static VECMAT_INLINE struct mat4f mat4f_adj(const struct mat4f m)
+{
+    float v00 = mat3f_det(mat4f_get_submat3(m, 1, 2, 3, 1, 2, 3));
+    float v01 = mat3f_det(mat4f_get_submat3(m, 0, 2, 3, 1, 2, 3));
+    float v02 = mat3f_det(mat4f_get_submat3(m, 0, 1, 3, 1, 2, 3));
+    float v03 = mat3f_det(mat4f_get_submat3(m, 0, 1, 2, 1, 2, 3));
+
+    float v10 = mat3f_det(mat4f_get_submat3(m, 1, 2, 3, 0, 2, 3));
+    float v11 = mat3f_det(mat4f_get_submat3(m, 0, 2, 3, 0, 2, 3));
+    float v12 = mat3f_det(mat4f_get_submat3(m, 0, 1, 3, 0, 2, 3));
+    float v13 = mat3f_det(mat4f_get_submat3(m, 0, 1, 2, 0, 2, 3));
+
+    float v20 = mat3f_det(mat4f_get_submat3(m, 1, 2, 3, 0, 1, 3));
+    float v21 = mat3f_det(mat4f_get_submat3(m, 0, 2, 3, 0, 1, 3));
+    float v22 = mat3f_det(mat4f_get_submat3(m, 0, 1, 3, 0, 1, 3));
+    float v23 = mat3f_det(mat4f_get_submat3(m, 0, 1, 2, 0, 1, 3));
+
+    float v30 = mat3f_det(mat4f_get_submat3(m, 1, 2, 3, 0, 1, 2));
+    float v31 = mat3f_det(mat4f_get_submat3(m, 0, 2, 3, 0, 1, 2));
+    float v32 = mat3f_det(mat4f_get_submat3(m, 0, 1, 3, 0, 1, 2));
+    float v33 = mat3f_det(mat4f_get_submat3(m, 0, 1, 2, 0, 1, 2));
+
+    return mat4f_init(v00, -v10, v20, -v30,
+                      -v01, v11, -v21, v31,
+                      v02, -v12, v22, -v32,
+                      -v03, v13, -v23, v33);
 }
 
 #ifdef __cplusplus
