@@ -36,10 +36,7 @@
 #   endif
 #endif
 
-#if defined(VECMAT_NOALIGN)
-#   define VECMAT_ALIGN
-#   define VECMAT_ALIGN_WARN_SUPPRESS
-#else
+#if defined(VECMAT_ENABLE_ALIGN)
 #   if defined(VECMAT_COMPILER_GCC) || defined(VECMAT_COMPILER_CLANG)
 #       define VECMAT_ALIGN __attribute__((aligned(16)))
 #   elif defined(VECMAT_COMPILER_MSVC) || defined(VECMAT_COMPILER_ICC)
@@ -51,6 +48,9 @@
 #   else
 #       define VECMAT_ALIGN_WARN_SUPPRESS
 #   endif
+#else
+#   define VECMAT_ALIGN
+#   define VECMAT_ALIGN_WARN_SUPPRESS
 #endif
 
 /*
