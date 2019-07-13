@@ -5,4 +5,3 @@ target_include_directories(
     INTERFACE
         .
 )
-
