@@ -9,8 +9,9 @@ LDFLAGS+=-lm
 HEADERS=$(addprefix $(VECMAT_PATH), vecmat-compiler.h vec2f.h vec3f.h vec4f.h \
 									vec2i.h)
 LINK_TEST_OBJS=link-test-c.o link-test-cpp.o
+TESTS=test testpp11 testpp98 link-test
 
-all: test testpp11 testpp98 link-test
+all: $(TESTS)
 
 test: test.c $(HEADERS)
 	$(CC) $(CFLAGS) $< -o $@ $(LDFLAGS)
@@ -29,4 +30,4 @@ link-test: $(LINK_TEST_OBJS)
 
 .PHONY: clean
 clean:
-	rm -f test testpp11 testpp98 link-test $(LINK_TEST_OBJS)
+	rm -f $(TESTS) $(LINK_TEST_OBJS)
