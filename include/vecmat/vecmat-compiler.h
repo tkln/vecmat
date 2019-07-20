@@ -58,9 +58,13 @@
  * additional braces in C++ mode.
  */
 #if defined(VECMAT_COMPILER_GCC) && !defined(__cplusplus)
-#   define VECMAT_INIT(x, ...) {{{ x, __VA_ARGS__ }}}
+#   define VECMAT_INIT(type, x, ...) {{{ x, __VA_ARGS__ }}}
 #else
-#   define VECMAT_INIT(x, ...) { x, __VA_ARGS__ }
+#   if __cplusplus == 199711L || __cplusplus == 1
+#       define VECMAT_INIT(type, x, ...) type(x, __VA_ARGS__)
+#   else
+#       define VECMAT_INIT(type, x, ...) { x, __VA_ARGS__ }
+#   endif
 #endif
 
 #endif

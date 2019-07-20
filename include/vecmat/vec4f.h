@@ -72,8 +72,10 @@ struct VECMAT_ALIGN vec4f {
 #endif /* __cplusplus */
 };
 
-static const struct vec4f vec4f_zeros = VECMAT_INIT(0.0f, 0.0f, 0.0f, 0.0f);
-static const struct vec4f vec4f_ones = VECMAT_INIT(1.0f, 1.0f, 1.0f, 1.0f);
+static const struct vec4f vec4f_zeros = VECMAT_INIT(vec4f,
+                                                    0.0f, 0.0f, 0.0f, 0.0f);
+static const struct vec4f vec4f_ones = VECMAT_INIT(vec4f,
+                                                   1.0f, 1.0f, 1.0f, 1.0f);
 
 static VECMAT_INLINE struct vec4f vec4f_init(float x, float y, float z, float w)
 {

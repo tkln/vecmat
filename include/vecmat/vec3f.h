@@ -73,8 +73,8 @@ struct VECMAT_ALIGN vec3f {
 #endif /* __cplusplus */
 };
 
-static const struct vec3f vec3f_zeros = VECMAT_INIT(0.0f, 0.0f, 0.0f);
-static const struct vec3f vec3f_ones = VECMAT_INIT(1.0f, 1.0f, 1.0f);
+static const struct vec3f vec3f_zeros = VECMAT_INIT(vec3f, 0.0f, 0.0f, 0.0f);
+static const struct vec3f vec3f_ones = VECMAT_INIT(vec3f, 1.0f, 1.0f, 1.0f);
 
 static VECMAT_INLINE struct vec3f vec3f_init(float x, float y, float z)
 {
