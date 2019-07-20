@@ -10,13 +10,16 @@ HEADERS=$(addprefix $(VECMAT_PATH), vecmat-compiler.h vec2f.h vec3f.h vec4f.h \
 									vec2i.h)
 LINK_TEST_OBJS=link-test-c.o link-test-cpp.o
 
-all: test testpp link-test
+all: test testpp11 testpp98 link-test
 
 test: test.c $(HEADERS)
 	$(CC) $(CFLAGS) $< -o $@ $(LDFLAGS)
 
-testpp: testpp.cc $(HEADERS)
-	$(CXX) $(CXXFLAGS) $< -o $@ $(LDFLAGS)
+testpp11: testpp.cc $(HEADERS)
+	$(CXX) $(CXXFLAGS) -std=c++11 $< -o $@ $(LDFLAGS)
+
+testpp98: testpp.cc $(HEADERS)
+	$(CXX) $(CXXFLAGS) -std=c++98 $< -o $@ $(LDFLAGS)
 
 link-test-c.o: link-test-c.c $(HEADERS)
 link-test-cpp.o: link-test-cpp.cc $(HEADERS)
@@ -26,4 +29,4 @@ link-test: $(LINK_TEST_OBJS)
 
 .PHONY: clean
 clean:
-	rm -f test testpp link-test $(LINK_TEST_OBJS)
+	rm -f test testpp11 testpp98 link-test $(LINK_TEST_OBJS)
