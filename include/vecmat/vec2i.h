@@ -51,8 +51,8 @@ struct VECMAT_ALIGN vec2i {
 #endif /* __cplusplus */
 };
 
-static const struct vec2i vec2i_zeros = VECMAT_INIT(vec2i, 0, 0);
-static const struct vec2i vec2i_ones = VECMAT_INIT(vec2i, 1, 1);
+static const struct vec2i vec2i_zeros = VECMAT_INIT(0, 0);
+static const struct vec2i vec2i_ones = VECMAT_INIT(1, 1);
 
 static VECMAT_INLINE struct vec2i vec2i_init(int x, int y)
 {
