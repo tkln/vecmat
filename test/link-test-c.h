@@ -5,7 +5,7 @@
 
 #ifdef __cplusplus
 extern "C" {
-struct vm::vec2f do_stuff(struct vm::vec2f a, struct vm::vec2f b);
+struct vm::c::vec2f do_stuff(struct vm::vec2f a, struct vm::vec2f b);
 };
 #else
 struct vec2f do_stuff(struct vec2f a, struct vec2f b);

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019 Aapo Vienamo
+ * Copyright (c) 2019-2020 Aapo Vienamo
  * SPDX-License-Identifier: CC0-1.0
  */
 
@@ -38,6 +38,26 @@ static VECMAT_INLINE struct vec2f vec2f_normalized(const struct vec2f v);
 static VECMAT_INLINE float vec2f_norm2(const struct vec2f v);
 static VECMAT_INLINE float vec2f_norm(const struct vec2f v);
 
+/*
+ * This type should be used in headers that are compiled as C++ on functions
+ * that have C linkage because the regular version of the type isn't compatible
+ * with C linkage when compiled as C++.
+ */
+#ifdef __cplusplus
+namespace c {
+extern "C" {
+VECMAT_ALIGN_WARN_SUPPRESS
+struct VECMAT_ALIGN vec2f {
+    union {
+        struct {
+            float x, y;
+        };
+    };
+};
+} /* namespace c */
+} /* extern "C" */
+#endif /* __cplusplus */
+
 VECMAT_ALIGN_WARN_SUPPRESS
 struct VECMAT_ALIGN vec2f {
     union {
@@ -50,8 +70,18 @@ struct VECMAT_ALIGN vec2f {
     {
     }
 
+    VECMAT_INLINE vec2f(const c::vec2f v) : x(v.x), y(v.y)
+    {
+    }
+
     VECMAT_INLINE vec2f(float x, float y) : x(x), y(y)
     {
+    }
+
+    VECMAT_INLINE c::vec2f to_c()
+    {
+        c::vec2f v = { x, y };
+        return v;
     }
 
     VECMAT_INLINE float norm2() const
