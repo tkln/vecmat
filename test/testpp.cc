@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2019 Aapo Vienamo
+ * Copyright (c) 2019-2020 Aapo Vienamo
  * SPDX-License-Identifier: CC0-1.0
  */
 
@@ -18,12 +18,16 @@ void test_vec2i(void)
 {
     vec2i a = vec2i(1, 2);
     vec2i b = a;
+    c::vec2i c = b;
+    (void)c;
 
     ASSERT_EQ(a.x, 1);
     ASSERT_EQ(a.y, 2);
 
     ASSERT(a == vec2i(1, 2));
     ASSERT(a != vec2i(2, 2));
+
+    ASSERT_EQ(c, b);
 
     ASSERT(+a == a);
     ASSERT_EQ(-a, vec2i(-1, -2));
@@ -56,12 +60,16 @@ void test_vec2f(void)
 {
     vec2f a = vec2f(1.0f, 2.0f);
     vec2f b = a;
+    c::vec2f c = b;
+    (void)c;
 
     ASSERT_EQ(a.x, 1.0f);
     ASSERT_EQ(a.y, 2.0f);
 
     ASSERT(a == vec2f(1.0f, 2.0f));
     ASSERT(a != vec2f(2.0f, 2.0f));
+
+    ASSERT_EQ(c, b);
 
     ASSERT(+a == a);
     ASSERT_EQ(-a, vec2f(-1.0f, -2.0f));
@@ -94,6 +102,8 @@ void test_vec3f(void)
 {
     vec3f a = vec3f(1.0f, 2.0f, 3.0f);
     vec3f b = a;
+    c::vec3f c = b;
+    (void)c;
 
     ASSERT_EQ(a.x, 1.0f);
     ASSERT_EQ(a.y, 2.0f);
@@ -101,6 +111,8 @@ void test_vec3f(void)
 
     ASSERT(a == vec3f(1.0f, 2.0f, 3.0f));
     ASSERT(a != vec3f(2.0f, 2.0f, 2.0f));
+
+    ASSERT_EQ(c, b);
 
     ASSERT_EQ(+a, a);
     ASSERT_EQ(-a, vec3f(-1.0f, -2.0f, -3.0f));
@@ -136,6 +148,8 @@ void test_vec4f(void)
 {
     vec4f a = vec4f(1.0f, 2.0f, 3.0f, 4.0f);
     vec4f b = a;
+    c::vec4f c = b;
+    (void)c;
 
     ASSERT_EQ(a.x, 1.0f);
     ASSERT_EQ(a.y, 2.0f);
@@ -144,6 +158,8 @@ void test_vec4f(void)
 
     ASSERT(a == vec4f(1.0f, 2.0f, 3.0f, 4.0f));
     ASSERT(a != vec4f(2.0f, 2.0f, 2.0f, 2.0f));
+
+    ASSERT_EQ(c, b);
 
     ASSERT(+a == a);
     ASSERT_EQ(-a, vec4f(-1.0f, -2.0f, -3.0f, -4.0f));
