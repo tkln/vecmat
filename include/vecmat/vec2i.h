@@ -33,24 +33,9 @@ static VECMAT_INLINE struct vec2i vec2i_div(const struct vec2i a,
 static VECMAT_INLINE struct vec2i vec2i_muls(const struct vec2i v, const int s);
 static VECMAT_INLINE struct vec2i vec2i_divs(const struct vec2i v, const int s);
 
-/*
- * This type should be used in headers that are compiled as C++ on functions
- * that have C linkage because the regular version of the type isn't compatible
- * with C linkage when compiled as C++.
- */
 #ifdef __cplusplus
 namespace c {
 extern "C" {
-VECMAT_ALIGN_WARN_SUPPRESS
-struct VECMAT_ALIGN vec2i {
-    union {
-        struct {
-            int x, y;
-        };
-    };
-};
-} /* namespace c */
-} /* extern "C" */
 #endif /* __cplusplus */
 
 VECMAT_ALIGN_WARN_SUPPRESS
@@ -60,26 +45,27 @@ struct VECMAT_ALIGN vec2i {
             int x, y;
         };
     };
+};
+
 #ifdef __cplusplus
+} /* namespace c */
+} /* extern "C" */
+
+VECMAT_ALIGN_WARN_SUPPRESS
+struct VECMAT_ALIGN vec2i: public c::vec2i {
     VECMAT_INLINE vec2i()
     {
     }
 
-    VECMAT_INLINE vec2i(c::vec2i v) : vec2i(v.x, v.y)
+    VECMAT_INLINE vec2i(c::vec2i v) : c::vec2i{v}
     {
     }
 
-    VECMAT_INLINE vec2i(int x, int y) : x(x), y(y)
+    VECMAT_INLINE vec2i(int x, int y) : c::vec2i{x, y}
     {
     }
-
-    VECMAT_INLINE c::vec2i to_c()
-    {
-        c::vec2i v = { x, y };
-        return v;
-    }
-#endif /* __cplusplus */
 };
+#endif /* __cplusplus */
 
 static const struct vec2i vec2i_zeros = VECMAT_INIT(0, 0);
 static const struct vec2i vec2i_ones = VECMAT_INIT(1, 1);

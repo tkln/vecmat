@@ -40,24 +40,9 @@ static VECMAT_INLINE struct vec3f vec3f_normalized(const struct vec3f v);
 static VECMAT_INLINE float vec3f_norm2(const struct vec3f v);
 static VECMAT_INLINE float vec3f_norm(const struct vec3f v);
 
-/*
- * This type should be used in headers that are compiled as C++ on functions
- * that have C linkage because the regular version of the type isn't compatible
- * with C linkage when compiled as C++.
- */
 #ifdef __cplusplus
 namespace c {
 extern "C" {
-VECMAT_ALIGN_WARN_SUPPRESS
-struct VECMAT_ALIGN vec3f {
-    union {
-        struct {
-            float x, y, z;
-        };
-    };
-};
-} /* namespace c */
-} /* extern "C" */
 #endif /* __cplusplus */
 
 VECMAT_ALIGN_WARN_SUPPRESS
@@ -67,23 +52,24 @@ struct VECMAT_ALIGN vec3f {
             float x, y, z;
         };
     };
+};
+
 #ifdef __cplusplus
+} /* namespace c */
+} /* extern "C" */
+
+VECMAT_ALIGN_WARN_SUPPRESS
+struct VECMAT_ALIGN vec3f: public c::vec3f {
     VECMAT_INLINE vec3f()
     {
     }
 
-    VECMAT_INLINE vec3f(const c::vec3f v) : vec3f(v.x, v.y, v.z)
+    VECMAT_INLINE vec3f(const c::vec3f v) : c::vec3f{v.x, v.y, v.z}
     {
     }
 
-    VECMAT_INLINE vec3f(float x, float y, float z) : x(x), y(y), z(z)
+    VECMAT_INLINE vec3f(float x, float y, float z) : c::vec3f{x, y, z}
     {
-    }
-
-    VECMAT_INLINE c::vec3f to_c()
-    {
-        c::vec3f v = { x, y, z };
-        return v;
     }
 
     VECMAT_INLINE float norm2() const
@@ -100,8 +86,8 @@ struct VECMAT_ALIGN vec3f {
     {
         return vec3f_normalized(*this);
     }
-#endif /* __cplusplus */
 };
+#endif /* __cplusplus */
 
 static const struct vec3f vec3f_zeros = VECMAT_INIT(0.0f, 0.0f, 0.0f);
 static const struct vec3f vec3f_ones = VECMAT_INIT(1.0f, 1.0f, 1.0f);

@@ -38,24 +38,9 @@ static VECMAT_INLINE struct vec4f vec4f_normalized(const struct vec4f v);
 static VECMAT_INLINE float vec4f_norm2(const struct vec4f v);
 static VECMAT_INLINE float vec4f_norm(const struct vec4f v);
 
-/*
- * This type should be used in headers that are compiled as C++ on functions
- * that have C linkage because the regular version of the type isn't compatible
- * with C linkage when compiled as C++.
- */
 #ifdef __cplusplus
 namespace c {
 extern "C" {
-VECMAT_ALIGN_WARN_SUPPRESS
-struct VECMAT_ALIGN vec4f {
-    union {
-        struct {
-            float x, y, z, w;
-        };
-    };
-};
-} /* namespace c */
-} /* extern "C" */
 #endif /* __cplusplus */
 
 VECMAT_ALIGN_WARN_SUPPRESS
@@ -65,24 +50,25 @@ struct VECMAT_ALIGN vec4f {
             float x, y, z, w;
         };
     };
+};
+
 #ifdef __cplusplus
+} /* namespace c */
+} /* extern "C" */
+
+VECMAT_ALIGN_WARN_SUPPRESS
+struct VECMAT_ALIGN vec4f: c::vec4f {
     VECMAT_INLINE vec4f()
     {
     }
 
-    VECMAT_INLINE vec4f(const c::vec4f v) : vec4f(v.x, v.y, v.z, v.w)
+    VECMAT_INLINE vec4f(const c::vec4f v) : c::vec4f{v.x, v.y, v.z, v.w}
     {
     }
 
     VECMAT_INLINE vec4f(float x, float y, float z, float w) :
-        x(x), y(y), z(z), w(w)
+        c::vec4f{x, y, z, w}
     {
-    }
-
-    VECMAT_INLINE c::vec4f to_c()
-    {
-        c::vec4f v = { x, y, z, w };
-        return v;
     }
 
     VECMAT_INLINE float norm2() const
@@ -99,8 +85,8 @@ struct VECMAT_ALIGN vec4f {
     {
         return vec4f_normalized(*this);
     }
-#endif /* __cplusplus */
 };
+#endif /* __cplusplus */
 
 static const struct vec4f vec4f_zeros = VECMAT_INIT(0.0f, 0.0f, 0.0f, 0.0f);
 static const struct vec4f vec4f_ones = VECMAT_INIT(1.0f, 1.0f, 1.0f, 1.0f);

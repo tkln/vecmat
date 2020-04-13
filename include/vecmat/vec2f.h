@@ -38,24 +38,9 @@ static VECMAT_INLINE struct vec2f vec2f_normalized(const struct vec2f v);
 static VECMAT_INLINE float vec2f_norm2(const struct vec2f v);
 static VECMAT_INLINE float vec2f_norm(const struct vec2f v);
 
-/*
- * This type should be used in headers that are compiled as C++ on functions
- * that have C linkage because the regular version of the type isn't compatible
- * with C linkage when compiled as C++.
- */
 #ifdef __cplusplus
 namespace c {
 extern "C" {
-VECMAT_ALIGN_WARN_SUPPRESS
-struct VECMAT_ALIGN vec2f {
-    union {
-        struct {
-            float x, y;
-        };
-    };
-};
-} /* namespace c */
-} /* extern "C" */
 #endif /* __cplusplus */
 
 VECMAT_ALIGN_WARN_SUPPRESS
@@ -65,23 +50,24 @@ struct VECMAT_ALIGN vec2f {
             float x, y;
         };
     };
+};
+
 #ifdef __cplusplus
+} /* namespace c */
+} /* extern "C" */
+
+VECMAT_ALIGN_WARN_SUPPRESS
+struct VECMAT_ALIGN vec2f: public c::vec2f {
     VECMAT_INLINE vec2f()
     {
     }
 
-    VECMAT_INLINE vec2f(const c::vec2f v) : x(v.x), y(v.y)
+    VECMAT_INLINE vec2f(const c::vec2f v) : c::vec2f{v}
     {
     }
 
-    VECMAT_INLINE vec2f(float x, float y) : x(x), y(y)
+    VECMAT_INLINE vec2f(float x, float y) : c::vec2f{x, y}
     {
-    }
-
-    VECMAT_INLINE c::vec2f to_c()
-    {
-        c::vec2f v = { x, y };
-        return v;
     }
 
     VECMAT_INLINE float norm2() const
@@ -98,8 +84,8 @@ struct VECMAT_ALIGN vec2f {
     {
         return vec2f_normalized(*this);
     }
-#endif /* __cplusplus */
 };
+#endif /* __cplusplus */
 
 static const struct vec2f vec2f_zeros = VECMAT_INIT(0.0f, 0.0f);
 static const struct vec2f vec2f_ones = VECMAT_INIT(1.0f, 1.0f);
